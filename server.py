@@ -234,9 +234,62 @@ def _soap_fault(message: str) -> bytes:
 # Index
 # ---------------------------------------------------------------------------
 
+def _available_scenarios() -> list[str]:
+    patterns = [
+        os.path.join(ROOT, "config", "carelisting", "patients_*.json"),
+        os.path.join(ROOT, "config", "person", "persons_*.json"),
+    ]
+    names = set()
+    for pattern in patterns:
+        import glob
+        for path in glob.glob(pattern):
+            name = os.path.basename(path).split("_", 1)[1].rsplit(".json", 1)[0]
+            names.add(name)
+    return ["default"] + sorted(names)
+
+
 @app.route("/scenario", methods=["GET"])
 def get_scenario():
-    return {"active": scenario.get()}
+    active = scenario.get()
+    scenarios = _available_scenarios()
+    buttons = "\n".join(
+        f"""<button onclick="switchTo('{s}')"
+            style="margin:6px;padding:10px 20px;font-size:1rem;cursor:pointer;
+                   background:{'#2563eb' if s == active else '#e5e7eb'};
+                   color:{'white' if s == active else '#111'};
+                   border:none;border-radius:6px;font-weight:{'bold' if s == active else 'normal'}">
+            {s}
+        </button>"""
+        for s in scenarios
+    )
+    return Response(f"""<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VVH Mock – Scenario</title>
+  <style>body{{font-family:sans-serif;max-width:600px;margin:60px auto;padding:0 20px}}</style>
+</head>
+<body>
+  <h1>Scenario</h1>
+  <p>Aktivt: <strong id="active">{active}</strong></p>
+  <div id="buttons">{buttons}</div>
+  <p id="msg" style="color:green;margin-top:16px"></p>
+  <script>
+    async function switchTo(name) {{
+      const r = await fetch('/scenario/' + name, {{method: 'POST'}});
+      const d = await r.json();
+      document.getElementById('active').textContent = d.active;
+      document.getElementById('msg').textContent = 'Bytte till ' + d.active;
+      document.querySelectorAll('button').forEach(b => {{
+        const isActive = b.textContent.trim() === d.active;
+        b.style.background = isActive ? '#2563eb' : '#e5e7eb';
+        b.style.color = isActive ? 'white' : '#111';
+        b.style.fontWeight = isActive ? 'bold' : 'normal';
+      }});
+    }}
+  </script>
+</body>
+</html>""", content_type="text/html")
 
 
 @app.route("/scenario/<name>", methods=["POST"])
