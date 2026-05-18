@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - "8088:8088"
+    volumes:
+      - ./config:/app/config
     environment:
       MOCK_PORT: "8088"
       MOCK_HOST: "${MOCK_HOST:-http://localhost:8088}"
