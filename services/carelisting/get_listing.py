@@ -7,6 +7,7 @@ from .xml_utils import (
 )
 import logging_config  # noqa: F401
 import state
+import scenario
 
 log = logging_config.request_logger
 
@@ -43,7 +44,7 @@ def handle(raw_xml: bytes) -> bytes:
     if created is not None:
         patient_listings = created
     else:
-        patients = _load(_PATIENTS_CFG)
+        patients = _load(scenario.resolve(_PATIENTS_CFG))
         patient = next((p for p in patients if p.get("personId") == person_id), None)
         if patient is None or patient.get("scenario") == "not_listed":
             return _ok_empty()

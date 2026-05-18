@@ -20,6 +20,7 @@ from .xml_utils import (
     parse_body, local_text, all_local, PERSON_ID_ROOT,
 )
 import logging_config  # noqa: F401
+import scenario
 
 log = logging_config.request_logger
 
@@ -27,7 +28,7 @@ _CONFIG = os.path.join(os.path.dirname(__file__), "../../config/person/persons.j
 
 
 def _load_persons() -> list[dict]:
-    with open(_CONFIG, encoding="utf-8") as f:
+    with open(scenario.resolve(_CONFIG), encoding="utf-8") as f:
         return json.load(f)
 
 

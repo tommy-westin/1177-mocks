@@ -1,0 +1,109 @@
+[
+  {
+    "personId": "194001019999",
+    "scenario": "listed_with_contacts",
+    "facilityHsaId": "SE2321000156-A001",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"},
+      {"code": "FAST_DOCTOR_CONTACT", "doctorHsaId": "SE2321000156-P001"},
+      {"code": "FAST_CARE_CONTACT", "careContactHsaId": "SE2321000156-P002"}
+    ],
+    "isInQueue": false
+  },
+  {
+    "personId": "197505059999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "199505059999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "200101019999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "196012129999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "195506069999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "198203039999",
+    "scenario": "listed_with_contacts",
+    "facilityHsaId": "SE2321000156-A001",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"},
+      {"code": "FAST_DOCTOR_CONTACT", "doctorHsaId": "SE2321000156-P001"}
+    ],
+    "isInQueue": false
+  },
+  {
+    "personId": "197012129999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "196808089999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "198811119999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "196601019999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "199909099999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "195001019999",
+    "scenario": "listed_with_contacts",
+    "facilityHsaId": "SE2321000156-A001",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"},
+      {"code": "FAST_DOCTOR_CONTACT", "doctorHsaId": "SE2321000156-P001"},
+      {"code": "FAST_CARE_CONTACT", "careContactHsaId": "SE2321000156-P002"}
+    ],
+    "isInQueue": false
+  },
+  {
+    "personId": "197303039999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "199201019999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "196303039999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "197808089999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "195908089999",
+    "scenario": "listed_no_contacts",
+    "facilityHsaId": "SE2321000156-A001",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"}
+    ],
+    "isInQueue": false
+  },
+  {
+    "personId": "196505051234",
+    "scenario": "listed_with_contacts",
+    "facilityHsaId": "SE2321000156-A003",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"},
+      {"code": "FAST_DOCTOR_CONTACT", "doctorHsaId": "SE2321000156-P007"}
+    ],
+    "isInQueue": false
+  }
+]

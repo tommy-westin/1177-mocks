@@ -27,6 +27,7 @@ sys.path.insert(0, ROOT)
 from flask import Flask, request, Response, send_from_directory, abort
 from lxml import etree
 import logging_config  # noqa: F401 – configures handlers
+import scenario
 
 # --- carelisting services ---
 from services.carelisting import (
@@ -232,6 +233,17 @@ def _soap_fault(message: str) -> bytes:
 # ---------------------------------------------------------------------------
 # Index
 # ---------------------------------------------------------------------------
+
+@app.route("/scenario", methods=["GET"])
+def get_scenario():
+    return {"active": scenario.get()}
+
+
+@app.route("/scenario/<name>", methods=["POST"])
+def set_scenario(name: str):
+    scenario.switch(name)
+    return {"active": scenario.get()}
+
 
 @app.route("/")
 def index():
