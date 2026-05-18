@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Inera AB licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->    
+<wsdl:definitions name='GetPersonsForProfileInteraction'
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tjsr='urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:5'
+    xmlns:itr='urn:riv:itintegration:registry:1'
+    xmlns:tns='urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfile:5:rivtabp21'
+    targetNamespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfile:5:rivtabp21'>
+
+    <wsdl:documentation>
+         Tjänsteinteraktionens namn: GetPersonsForProfile
+         Beskrivning: 
+           Tjänst för att hämta uppgifter för 1..* personidentiteter.
+           Mängden data i svaret är dels beroende av den profil som efterfrågas, dels om personen har sekretessmarkering eller ej. Se kap 8 för mer information.
+         Revisioner: 
+         Tjänstedomän: strategicresourcemanagement:persons:person
+         Tjänsteinteraktionstyp: Fråga-Svar
+         WS-profil: RIVTABP21
+         Förvaltas av: Inera AB
+    </wsdl:documentation>
+    
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfile:5:rivtabp21'>
+            <xs:import schemaLocation='GetPersonsForProfileResponder_5.0.xsd' namespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:5' />
+            <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
+        </xs:schema>
+    </wsdl:types>
+    
+        
+    <wsdl:message name='GetPersonsForProfileRequest'>
+        <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
+            <wsdl:documentation>http://tempuri.org</wsdl:documentation>
+        </wsdl:part>
+    
+        <wsdl:part name='parameters' element='tjsr:GetPersonsForProfile' />
+    </wsdl:message>
+
+    <wsdl:message name='GetPersonsForProfileResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetPersonsForProfileResponse' />
+    </wsdl:message>
+
+    <wsdl:portType name='GetPersonsForProfileResponderInterface'>
+        <wsdl:operation name='GetPersonsForProfile'>
+            <wsdl:input message='tns:GetPersonsForProfileRequest' />
+            <wsdl:output message='tns:GetPersonsForProfileResponse' />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetPersonsForProfileResponderBinding' type='tns:GetPersonsForProfileResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+        <wsdl:operation name='GetPersonsForProfile'>
+            <soap:operation soapAction='urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:5:GetPersonsForProfile' style='document' />
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetPersonsForProfileRequest' part='LogicalAddress' />
+                <soap:body use='literal' parts='parameters' />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal' />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetPersonsForProfileResponderService'>
+        <wsdl:port name='GetPersonsForProfileResponderPort' binding='tns:GetPersonsForProfileResponderBinding'>
+            <soap:address location='http://tempuri.org' />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

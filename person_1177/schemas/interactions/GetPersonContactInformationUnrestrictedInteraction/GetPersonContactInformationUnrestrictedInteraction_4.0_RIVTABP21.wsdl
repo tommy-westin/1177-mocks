@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Inera AB licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->    
+<wsdl:definitions name='GetPersonContactInformationUnrestrictedInteraction'
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tjsr='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationUnrestrictedResponder:4'
+    xmlns:itr='urn:riv:itintegration:registry:1'
+    xmlns:tns='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationUnrestricted:4:rivtabp21'
+    targetNamespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationUnrestricted:4:rivtabp21'>
+
+    <wsdl:documentation>
+         Tjänsteinteraktionens namn: GetPersonContactInformationUnrestricted
+         Beskrivning: 
+           Tjänst för att hämta information om kontaktinformation till personen. Antingen via någon tjänst med vilken personen själv har matat in uppgifterna (t.ex via 1177) eller av t.ex en vårdaktör via vårdaktörens tjänst efter uppgivande av personen. Kontaktuppgifterna består dels av vilka kontaktvägar (telefon, mail etc) som personen själv i fråga kan nås på. Dels av kontaktpersoner och dess kontaktuppgifter som personen uppger. Kontaktpersoner kan t.ex vara anhöriga som vårdens aktörer kan ha behov av att kontakta kring personens vård.
+         Revisioner: 
+         Tjänstedomän: strategicresourcemanagement:persons:person
+         Tjänsteinteraktionstyp: Fråga-Svar
+         WS-profil: RIVTABP21
+         Förvaltas av: Inera AB
+    </wsdl:documentation>
+    
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationUnrestricted:4:rivtabp21'>
+            <xs:import schemaLocation='GetPersonContactInformationUnrestrictedResponder_4.0.xsd' namespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationUnrestrictedResponder:4' />
+            <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
+        </xs:schema>
+    </wsdl:types>
+    
+        
+    <wsdl:message name='GetPersonContactInformationUnrestrictedRequest'>
+        <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
+            <wsdl:documentation>http://tempuri.org</wsdl:documentation>
+        </wsdl:part>
+    
+        <wsdl:part name='parameters' element='tjsr:GetPersonContactInformationUnrestricted' />
+    </wsdl:message>
+
+    <wsdl:message name='GetPersonContactInformationUnrestrictedResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetPersonContactInformationUnrestrictedResponse' />
+    </wsdl:message>
+
+    <wsdl:portType name='GetPersonContactInformationUnrestrictedResponderInterface'>
+        <wsdl:operation name='GetPersonContactInformationUnrestricted'>
+            <wsdl:input message='tns:GetPersonContactInformationUnrestrictedRequest' />
+            <wsdl:output message='tns:GetPersonContactInformationUnrestrictedResponse' />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetPersonContactInformationUnrestrictedResponderBinding' type='tns:GetPersonContactInformationUnrestrictedResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+        <wsdl:operation name='GetPersonContactInformationUnrestricted'>
+            <soap:operation soapAction='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationUnrestrictedResponder:4:GetPersonContactInformationUnrestricted' style='document' />
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetPersonContactInformationUnrestrictedRequest' part='LogicalAddress' />
+                <soap:body use='literal' parts='parameters' />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal' />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetPersonContactInformationUnrestrictedResponderService'>
+        <wsdl:port name='GetPersonContactInformationUnrestrictedResponderPort' binding='tns:GetPersonContactInformationUnrestrictedResponderBinding'>
+            <soap:address location='http://tempuri.org' />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

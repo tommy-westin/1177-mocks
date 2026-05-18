@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="./../TK-doc-sv.xsl"?>
+<testsuite>
+    <id>CreateListing</id>
+    <description>Testsvit för att verifiera tjänsteproducenter för CreateListing.</description>
+    <globaldata>
+        <webServiceUrl>http://localhost:8088/mockCreateListingResponderBinding</webServiceUrl>
+		<!-- Tjänstekonsument, skickas i http-header "x-rivta-original-serviceconsumer-hsaid" -->
+		<originalServiceconsumerHsaId>SE-CONSUMER-001</originalServiceconsumerHsaId>
+		<!-- Logisk adressat och pålistningsregion, normalt samma värde -->
+		<logicalAddress>01</logicalAddress>
+		<newListingCounty>01</newListingCounty>
+		
+		<!-- Standardvärden för parametrar, kan ändras per testfall -->
+		<personIdRoot>1.2.752.129.2.1.3.1</personIdRoot>
+		<personIdExtension>195709263080</personIdExtension>
+		<organizationIdRoot>1.2.752.129.2.1.4.1</organizationIdRoot>
+		<organizationIdExtension>SE12345-ZYX</organizationIdExtension>
+		<healthcareFacilityHSAId>SE12345-XYZ</healthcareFacilityHSAId>
+		<listingTypeCode>PV</listingTypeCode>
+		<listingTypeCodeSystem>1.2.752.129.5.1.27</listingTypeCodeSystem>
+			
+		<!-- Parametrar för loggning -->
+		<logTestData>false</logTestData>
+		<logTestDataPath>C:/temp/SOAP-UI/</logTestDataPath>
+		<logTestDataFilesAllowed>500</logTestDataFilesAllowed>
+
+    </globaldata>
+    <testcase id="1.1 Personnummer">
+        <description>Verifierar att invånare med personnummer kan genomföra en listning med endast obligatoriska inparametrar.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="1.2 Samordningsnummer">
+        <description>Verifierar att invånare med samordningsnummer kan genomföra en listning med endast obligatoriska inparametrar.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<personIdExtension>196812732391</personIdExtension>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="1.3.1 listingType national">
+        <description>Verifierar att listning med nationell listningstyp stöds.
+		</description>
+        <data>
+			<!-- <listingTypeCode>PV</listingTypeCode> -->
+			<!-- <listingTypeCodeSystem>1.2.752.129.5.1.27</listingTypeCodeSystem> -->
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+        </data>
+    </testcase>
+    <testcase id="1.3.2 listingType local">
+        <description>Verifierar att listning med lokal listningstyp kan genomföras (om regionen erbjuder stöd för sådan).
+			Upprepa testet med de olika koder som producenten skall stödja.
+		</description>
+        <data>
+			<listingTypeCode>LOKALTYP</listingTypeCode>
+			<listingTypeCodeSystem>TBD_LOKAL_LISTNINGSTYP</listingTypeCodeSystem>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+        </data>
+    </testcase>
+    <testcase id="1.4.1 homeCounty_recipient">
+        <description>Verifierar att listning kan göras där hemregion är samma som mottagare (LogicalAddress). Ska ge samma resultat som att utelämna elementet.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="1.4.2 homeCounty_other">
+        <description>Verifierar att listning kan göras där hemregion är annan än mottagande region (dvs utomlänslistning). 
+			Ange ett länsnummer som ej är samma som mottagande region.
+		</description>
+        <data>
+			<homeCounty>02</homeCounty>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+
+    <testcase id="2.1 healthcarePersonnel">
+        <description>Verifierar att listning kan göras med val av vårdpersonal (husläkare). Ange ett personligt HSAID som är tillgängligt för listning.
+		</description>
+        <data>
+			<healthcarePersonnel>PERSONALHSA123445-001</healthcarePersonnel>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.2.1 addToQueue_true">
+        <description>Verifierar att invånare kan välja att ställa sig i kö, för enheter som erbjuder detta.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.2.2 addToQueue_false">
+        <description>Verifierar att listning kan göras med valet att inte ställa sig i kö. Skall ge samma resultat som att utelämna elementet.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.3.1 actor_citizen">
+        <description>Verifierar att listningssystemet kan ta emot anrop som initierats av invånare.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.3.2 actor_guardian">
+        <description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdnadshavare i ombudsläge.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<guardianIdExtension>199406062381</guardianIdExtension>
+			<personIdExtension>201702022383</personIdExtension>
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.3.3 actor_region">
+        <description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdpersonal på region.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <organizationIdExtension></organizationIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.3.4 actor_private_caregiver">
+        <description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdpersonal hos privat vårdgivare med vårdavtal.
+			Listningssystemet ansvarar för att avgöra om man tillåter detta.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <organizationIdExtension></organizationIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.3.5 actor_self_owned_caregiver">
+        <description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdgivare driven i egen regi.
+			Listningssystemet ansvarar för att avgöra om man tillåter detta.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <organizationIdExtension></organizationIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="2.3.6 actor_healthcare_adviser">
+        <description>Verifierar att listningssystemet kan ta emot anrop som initierats av sjukvårdsrådgivning.
+			Listningssystemet ansvarar för att avgöra om man tillåter detta.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <organizationIdExtension></organizationIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+
+    <testcase id="3.1 SoapFault">
+		<description>Verifierar att ett Soap Fault-meddelande returneras vid tekniskt fel.
+			<br/>Testet förutsätter att miljön kan modifieras så att ett tekniskt fel uppstår.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.1 Error healthcareFacilityHSAId">
+		<description>Verifierar att ett korrekt ERROR-svar returneras om mottagningen inte är tillgänglig för listning.
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12345-NA</healthcareFacilityHSAId>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.2 Error newListingCounty">
+		<description>Verifierar att ett korrekt ERROR-svar returneras om meddelandet skickas till fel mottagare (pålistningsregion ej är samma som mottagare).
+		</description>
+        <data>
+			<logicalAddress>01</logicalAddress>
+			<newListingCounty>13</newListingCounty>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.3 Error maximumAnnualUpdatesExceeded">
+		<description>Verifierar att ett korrekt ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED returneras om invånaren redan listat om sig max antal gånger under året.
+			<br/>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.4 Error maximumCitizenReachedOnCareUnit">
+		<description>Verifierar att ett korrekt ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT returneras om vårdenheten inte kan ta emot fler listnigar.
+			<br/>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.5 Error guardianConsentNeeded">
+		<description>Verifierar att ett korrekt ERROR_GUARDIAN_CONSENT_NEEDED returneras om vårdnadshavares samtycke krävs.
+			<br/>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.6 Error ageLimit">
+		<description>Verifierar att ett korrekt ERROR_AGE_LIMIT returneras om invånaren inte ligger inom tillåten åldersgräns.
+			<br/>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+
+	<testcase id="4.1 Encoding_HeaderProlog">
+        <description>Verifierar att 
+          <br/>1. Content-Type header attributet charset har värdet UTF-8 eller UTF-16.
+          <br/>2. XML Prolog attributet encoding har värdet UTF-8 or UTF-16.
+          <br/>3. Om båda är satta ska de ha samma värde.
+        </description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+	<testcase id="4.2 Encoding_SpecialCharacters">
+        <description>Testet verifierar att specialtecken så som åäö kan hanteras.
+            <br/>Använd en sträng med så många specialtecken som möjligt.
+        </description>
+        <data>
+			<testString>Hjälptext</testString>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+    <testcase id="4.3 Info">
+       <description>Verifierar att ett korrekt INFO meddelande returneras när en bokning genomförs men ett meddelande behöver lämnas till användaren.
+			<br/>Testet kräver att testaren kan skapa de verksamhetsspecifika förutsättningar som krävs för att INFO meddelandet ska skickas.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+</testsuite>

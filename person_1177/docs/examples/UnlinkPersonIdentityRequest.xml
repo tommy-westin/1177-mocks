@@ -1,0 +1,41 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:UnlinkPersonIdentityResponder:3" xmlns:urn2="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header>
+      <urn:LogicalAddress>?</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:UnlinkPersonIdentity>
+         <urn1:actor>
+            <urn2:id>
+               <urn2:root>?</urn2:root>
+               <!--Optional:-->
+               <urn2:extension>?</urn2:extension>
+               <!--You may enter ANY elements at this point-->
+            </urn2:id>
+            <!--Optional:-->
+            <urn2:professional>
+               <urn2:organizationId>
+                  <urn2:root>?</urn2:root>
+                  <!--Optional:-->
+                  <urn2:extension>?</urn2:extension>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:organizationId>
+               <!--You may enter ANY elements at this point-->
+            </urn2:professional>
+            <!--You may enter ANY elements at this point-->
+         </urn1:actor>
+         <urn1:unlinkFromIdentity>
+            <urn2:root>?</urn2:root>
+            <!--Optional:-->
+            <urn2:extension>?</urn2:extension>
+            <!--You may enter ANY elements at this point-->
+         </urn1:unlinkFromIdentity>
+         <urn1:unlinkIdentity>
+            <urn2:root>?</urn2:root>
+            <!--Optional:-->
+            <urn2:extension>?</urn2:extension>
+            <!--You may enter ANY elements at this point-->
+         </urn1:unlinkIdentity>
+         <!--You may enter ANY elements at this point-->
+      </urn1:UnlinkPersonIdentity>
+   </soapenv:Body>
+</soapenv:Envelope>

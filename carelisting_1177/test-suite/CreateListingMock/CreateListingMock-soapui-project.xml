@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="04f3b5c9-cc22-4660-ae90-65d174eed22e" activeEnvironment="Default" name="CreateListingMock" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="53ce7808-3fba-4da9-ac29-3443d080f7cf" wsaVersion="NONE" name="CreateListingResponderBinding" type="wsdl" bindingName="{urn:riv:supportprocess:logistics:carelisting:CreateListing:2:rivtabp21}CreateListingResponderBinding" soapVersion="1_1" anonymous="optional" definition="../../schemas/interactions/CreateListingInteraction/CreateListingInteraction_2.0_RIVTABP21.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/NMT/Repon/Listning/riv.supportprocess.logistics.carelisting/schemas/interactions/CreateListingInteraction/CreateListingInteraction_2.0_RIVTABP21.wsdl"><con:part><con:url>file:/C:/NMT/Repon/Listning/riv.supportprocess.logistics.carelisting/schemas/interactions/CreateListingInteraction/CreateListingInteraction_2.0_RIVTABP21.wsdl</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<wsdl:definitions name="CreateListingInteraction" targetNamespace="urn:riv:supportprocess:logistics:carelisting:CreateListing:2:rivtabp21" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tjsr="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2" xmlns:tjsi="urn:riv:supportprocess:logistics:carelisting:CreateListingInitiator:2" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:CreateListing:2:rivtabp21" xmlns:itr="urn:riv:itintegration:registry:1">
+  <wsdl:documentation>Tjänsteinteraktionens namn: CreateListingInteraction
+		Beskrivning: 
+		  Lista eller omlista invånare
+		Revisioner: 
+		Tjänstedomän: supportprocess:logistics:carelisting
+		Tjänsteinteraktionstyp: Fråga-Svar
+		WS-profil: RIVTABP21
+		Förvaltas av: Sveriges Kommuner och Landsting</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:CreateListing:2:rivtabp21">
+      <xs:import schemaLocation="CreateListingResponder_2.0.xsd" namespace="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2"/>
+      <xs:import schemaLocation="../../core_components/itintegration_registry_1.0.xsd" namespace="urn:riv:itintegration:registry:1"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateListingRequest">
+    <wsdl:part name="LogicalAddress" element="itr:LogicalAddress">
+      <wsdl:documentation>The region code (länskod)</wsdl:documentation>
+    </wsdl:part>
+    <wsdl:part name="parameters" element="tjsr:CreateListing"/>
+  </wsdl:message>
+  <wsdl:message name="CreateListingResponse">
+    <wsdl:part name="parameters" element="tjsr:CreateListingResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CreateListingResponderInterface">
+    <wsdl:operation name="CreateListing">
+      <wsdl:input message="tns:CreateListingRequest"/>
+      <wsdl:output message="tns:CreateListingResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CreateListingResponderBinding" type="tns:CreateListingResponderInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreateListing">
+      <soap:operation soapAction="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing" style="document"/>
+      <wsdl:input>
+        <soap:header use="literal" message="tns:CreateListingRequest" part="LogicalAddress"/>
+        <soap:body use="literal" parts="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreateListingResponderService">
+    <wsdl:port name="CreateListingResponderPort" binding="tns:CreateListingResponderBinding">
+      <soap:address location="http://tempuri.org"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\NMT\Repon\Listning\riv.supportprocess.logistics.carelisting\schemas\interactions\CreateListingInteraction\CreateListingResponder_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2" xmlns:core="urn:riv:supportprocess:logistics:carelisting:2">
+  <xs:import schemaLocation="../../core_components/supportprocess_logistics_carelisting_2.0.xsd" namespace="urn:riv:supportprocess:logistics:carelisting:2"/>
+  <xs:element name="CreateListing" type="tns:CreateListingType"/>
+  <xs:element name="CreateListingResponse" type="tns:CreateListingResponseType"/>
+  <xs:complexType name="CreateListingType">
+    <xs:sequence>
+      <xs:element name="actor" type="core:ActorType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="personId" type="core:IIType"/>
+      <xs:element name="healthcareFacilityHSAId" type="core:HSAIdType"/>
+      <xs:element name="listingType" type="core:CVType"/>
+      <xs:element name="healthcarePersonnel" type="core:HSAIdType" minOccurs="0"/>
+      <xs:element name="addToQueue" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="homeCounty" type="core:IIType" minOccurs="0"/>
+      <xs:element name="newListingCounty" type="core:IIType" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateListingResponseType">
+    <xs:sequence>
+      <xs:element name="resultCode" type="core:ResultCodeEnum" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="resultText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\NMT\Repon\Listning\riv.supportprocess.logistics.carelisting\schemas\core_components\supportprocess_logistics_carelisting_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:2">
+  <xs:complexType name="IIType">
+    <xs:sequence>
+      <xs:element name="root" type="xs:string"/>
+      <xs:element name="extension" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CVType">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="codeSystem" type="xs:string"/>
+      <xs:element name="codeSystemName" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeSystemVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+      <xs:element name="originalText" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="HSAIdType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="HealthcareFacilityType">
+    <xs:annotation>
+      <xs:documentation>Vårdinrättning/vårdenhet som ansvarar för en person som listat sig hos dem.
+            Det är denna inrättning som får ekonomisk ersättning för personen.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="id" type="tns:HSAIdType"/>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Namn på vårdenheten.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasQueue" type="xs:boolean"/>
+      <xs:element name="supportedListingTypes" type="tns:CVType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Lista med listningstyper som vårdeneheten stödjer. Kan utelämnas om information
+                saknas eller om informationen inte behövs i kontexten där entiteten är tänkt att användas i.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supportsHealthcarePersonnel" type="xs:boolean"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListingHealthcareFacilityType">
+    <xs:sequence>
+      <xs:element name="validFromDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="validToDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="listingType" type="tns:CVType"/>
+      <xs:element name="healthcareFacility" type="tns:HealthcareFacilityType"/>
+      <xs:element name="healthcarePersonnel" type="tns:HealthcarePersonnelType" minOccurs="0"/>
+      <xs:element name="isInQueue" type="xs:boolean"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HealthcarePersonnelType">
+    <xs:sequence>
+      <xs:element name="id" type="tns:HSAIdType"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ResultCodeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="INFO"/>
+      <xs:enumeration value="ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED"/>
+      <xs:enumeration value="ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT"/>
+      <xs:enumeration value="ERROR_GUARDIAN_CONSENT_NEEDED"/>
+      <xs:enumeration value="ERROR_AGE_LIMIT"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ActorType">
+    <xs:sequence>
+      <xs:element name="actorId" type="tns:IIType"/>
+      <xs:element name="actorType" type="tns:ActorTypeEnum"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ActorTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CITIZEN"/>
+      <xs:enumeration value="GUARDIAN"/>
+      <xs:enumeration value="REGION"/>
+      <xs:enumeration value="PRIVATE_CAREGIVER"/>
+      <xs:enumeration value="SELF_OWNED_CAREGIVER"/>
+      <xs:enumeration value="HEALTHCARE_ADVISER"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\NMT\Repon\Listning\riv.supportprocess.logistics.carelisting\schemas\core_components\itintegration_registry_1.0.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:riv:itintegration:registry:1" elementFormDefault="qualified" version="1.0" xmlns="urn:riv:itintegration:registry:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>Beskrivning: 	Grundläggande informationsobjekt för domänen itintegration:registry (adressering av tjänster)
+			
+			Revisionshistorik: 2011-06-27 Mats Ekhammar, Callista Enterprise AB
+				Added ServiceContractType
+			
+			Datum:			2011-05-04
+			Beskrivning:	Initial version
+			Författare:		marcus.krantz@callistaenterprise.se</xs:documentation>
+  </xs:annotation>
+  <xs:element name="LogicalAddress" type="LogicalAddressType"/>
+  <xs:element name="ServiceContract" type="ServiceContractType"/>
+  <xs:simpleType name="LogicalAddressType">
+    <xs:annotation>
+      <xs:documentation>Defines the type for logical address according to national reference architecture.
+				Superseeds wsa:To as type for logical address header in RIVTA 2.1.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="ServiceContractType">
+    <xs:annotation>
+      <xs:documentation>Type which describes a service contract. Used in interaction GetSupportedServiceContracts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ServiceContractNamespace" type="xs:anyURI"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://L-SE-0436:8088/mockCreateListingResponderBinding</con:endpoint><con:endpoint>http://tempuri.org</con:endpoint></con:endpoints><con:operation id="0555c3f2-d2fa-4621-97e6-86065776a9ba" isOneWay="false" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing" name="CreateListing" bindingOperationName="CreateListing" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="75ba3283-ee68-4053-813c-365a78a93882" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://tempuri.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>?</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:CreateListing>\r
+         <urn1:personId>\r
+            <urn2:root>?</urn2:root>\r
+            <!--Optional:-->\r
+            <urn2:extension>?</urn2:extension>\r
+            <!--You may enter ANY elements at this point-->\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>?</urn1:healthcareFacilityHSAId>\r
+         <urn1:listingTypeCode>?</urn1:listingTypeCode>\r
+         <!--Optional:-->\r
+         <urn1:healthcarePersonnel>?</urn1:healthcarePersonnel>\r
+         <!--Optional:-->\r
+         <urn1:addToQueue>?</urn1:addToQueue>\r
+         <!--Optional:-->\r
+         <urn1:homeCounty>\r
+            <urn2:root>?</urn2:root>\r
+            <!--Optional:-->\r
+            <urn2:extension>?</urn2:extension>\r
+            <!--You may enter ANY elements at this point-->\r
+         </urn1:homeCounty>\r
+         <!--Optional:-->\r
+         <urn1:newListingCounty>\r
+            <urn2:root>?</urn2:root>\r
+            <!--Optional:-->\r
+            <urn2:extension>?</urn2:extension>\r
+            <!--You may enter ANY elements at this point-->\r
+         </urn1:newListingCounty>\r
+         <!--You may enter ANY elements at this point-->\r
+      </urn1:CreateListing>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:call></con:operation></con:interface><con:mockService id="5852e311-e646-467d-a00b-a4272a402290" port="8088" path="/mockCreateListingResponderBinding" host="L-SE-0436" name="CreateListingResponderBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:afterRequestScript>def mh = new se.skl.rivta.tksupport.soapui.MockHelper(context, mockResult, log)
+mh.storeRequestResponse()</con:afterRequestScript><con:mockOperation name="CreateListing" id="ebb4d57e-d996-40a2-ae43-20f36499ea49" interface="CreateListingResponderBinding" operation="CreateListing"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.support.wsdl.WsdlContext
+import com.eviware.soapui.impl.wsdl.support.wsdl.WsdlValidator
+import com.eviware.soapui.impl.wsdl.panels.mockoperation.WsdlMockRequestMessageExchange
+
+//Läs in mockens data.xml
+import se.skl.rivta.tksupport.soapui.datasource.XmlDataReaderMock
+import com.eviware.soapui.support.GroovyUtils
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReaderMock(context, dataFile)
+source.load()
+
+synchronized(mockRequest.context.mockService){
+	mh = new se.skl.rivta.tksupport.soapui.MockHelper(mockRequest, mockOperation)
+	
+	context.message = getSchemaErrorMessage() //?: getSchematronErrorMessage()
+	if (context.message) {
+		return "SoapFault"
+	}
+	if (mockRequest.requestHeaders.containsKey('x-mock-response')) {
+		def responseName = mockRequest.requestHeaders['x-mock-response'][0]
+		log.debug("responseName: ${responseName}")
+		return responseName
+	}
+	return "Response OK"
+}
+
+def getSchemaErrorMessage() {
+    log.info "Schema validation started"
+     return  mh.getSchemaErrorsInRequest()
+}
+
+def getSchematronErrorMessage() {
+    log.info "Schematron validation started"
+    def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
+    def file = new File(groovyUtils.projectPath + "/constraints.xml")
+    return mh.getSchematronErrorsInRequest(file)
+}
+</con:dispatchPath><con:response name="Response OK" id="e81bcc04-373b-4c9e-aaba-de9287dd5195" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:CreateListingResponse>
+         <urn:resultCode>OK</urn:resultCode>
+      </urn:CreateListingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:response name="SoapFault" id="44062c3f-a5c4-460f-9ce7-1f66116cb5a0" httpResponseStatus="500" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>Client</faultcode>
+         <faultstring>An error occurred: ${message}</faultstring>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:response name="Response ERROR" id="3619fb33-cb17-47af-aeb5-940c1489b1e8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:CreateListingResponse>
+         <urn:resultCode>ERROR</urn:resultCode>
+         <urn:resultText>There was a logical error...</urn:resultText>
+      </urn:CreateListingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:response name="Response INFO" id="3619fb33-cb17-47af-aeb5-940c1489b1e8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:CreateListingResponse>
+         <urn:resultCode>INFO</urn:resultCode>
+         <urn:resultText>Hjälptext riktad till användaren.</urn:resultText>
+      </urn:CreateListingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:response name="Response ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED" id="3619fb33-cb17-47af-aeb5-940c1489b1e8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:CreateListingResponse>
+         <urn:resultCode>ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED</urn:resultCode>
+         <urn:resultText>Listning misslyckades. Max antal omlistningar per år har redan gjorts.</urn:resultText>
+      </urn:CreateListingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:response name="Response ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT" id="3619fb33-cb17-47af-aeb5-940c1489b1e8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:CreateListingResponse>
+         <urn:resultCode>ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT</urn:resultCode>
+         <urn:resultText>Listning misslyckades. Max antal invånare är redan listade på vårdenheten.</urn:resultText>
+      </urn:CreateListingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:response name="Response ERROR_GUARDIAN_CONSENT_NEEDED" id="3619fb33-cb17-47af-aeb5-940c1489b1e8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:CreateListingResponse>
+         <urn:resultCode>ERROR_GUARDIAN_CONSENT_NEEDED</urn:resultCode>
+         <urn:resultText>Listning misslyckades. Vårdnadshavarens samtycke krävs, kontakta mottagningen.</urn:resultText>
+      </urn:CreateListingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:response name="Response ERROR_AGE_LIMIT" id="3619fb33-cb17-47af-aeb5-940c1489b1e8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:CreateListingResponse>
+         <urn:resultCode>ERROR_AGE_LIMIT</urn:resultCode>
+         <urn:resultText>Listning misslyckades. Invånarens ålder är utanför gränsen.</urn:resultText>
+      </urn:CreateListingResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:CreateListingResponder:2:CreateListing"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

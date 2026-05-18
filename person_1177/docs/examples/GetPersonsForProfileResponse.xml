@@ -1,0 +1,568 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:3" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:GetPersonsForProfileResponse>
+         <!--1 or more repetitions:-->
+         <urn:requestedPersonRecord>
+            <urn1:requestedPersonalIdentity>
+               <urn1:root>?</urn1:root>
+               <!--Optional:-->
+               <urn1:extension>?</urn1:extension>
+               <!--You may enter ANY elements at this point-->
+            </urn1:requestedPersonalIdentity>
+            <!--Optional:-->
+            <urn1:personRecord>
+               <urn1:personalIdentity>
+                  <urn1:root>?</urn1:root>
+                  <!--Optional:-->
+                  <urn1:extension>?</urn1:extension>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:personalIdentity>
+               <!--Optional:-->
+               <urn1:gender>?</urn1:gender>
+               <urn1:protectedPersonIndicator>?</urn1:protectedPersonIndicator>
+               <urn1:testIndicator>?</urn1:testIndicator>
+               <urn1:primaryIdentity>?</urn1:primaryIdentity>
+               <!--Optional:-->
+               <urn1:version>?</urn1:version>
+               <!--Optional:-->
+               <urn1:name>
+                  <!--Optional:-->
+                  <urn1:givenNameIndicator>?</urn1:givenNameIndicator>
+                  <!--Optional:-->
+                  <urn1:givenName>
+                     <urn1:name>?</urn1:name>
+                     <!--Optional:-->
+                     <urn1:attested>?</urn1:attested>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:givenName>
+                  <!--Optional:-->
+                  <urn1:middleName>
+                     <urn1:name>?</urn1:name>
+                     <!--Optional:-->
+                     <urn1:attested>?</urn1:attested>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:middleName>
+                  <!--Optional:-->
+                  <urn1:surname>
+                     <urn1:name>?</urn1:name>
+                     <!--Optional:-->
+                     <urn1:attested>?</urn1:attested>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:surname>
+                  <!--Optional:-->
+                  <urn1:notificationName>?</urn1:notificationName>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:name>
+               <!--Zero or more repetitions:-->
+               <urn1:linkedIdentity>
+                  <urn1:referredPersonalIdentity>
+                     <urn1:root>?</urn1:root>
+                     <!--Optional:-->
+                     <urn1:extension>?</urn1:extension>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:referredPersonalIdentity>
+                  <urn1:assuranceLevel>?</urn1:assuranceLevel>
+                  <urn1:primaryIdentity>?</urn1:primaryIdentity>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:linkedIdentity>
+               <!--Optional:-->
+               <urn1:birth>
+                  <!--Optional:-->
+                  <urn1:dateOfBirth>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:dateOfBirth>
+                  <!--Optional:-->
+                  <urn1:placeOfBirthSweden>
+                     <!--Optional:-->
+                     <urn1:birthCountyCode>?</urn1:birthCountyCode>
+                     <!--Optional:-->
+                     <urn1:birthParish>?</urn1:birthParish>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:placeOfBirthSweden>
+                  <!--Optional:-->
+                  <urn1:birthAbroad>
+                     <!--Optional:-->
+                     <urn1:placeOfBirthAbroad>
+                        <!--Optional:-->
+                        <urn1:placeOfBirthAbroad>?</urn1:placeOfBirthAbroad>
+                        <!--Optional:-->
+                        <urn1:attested>?</urn1:attested>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:placeOfBirthAbroad>
+                     <!--Optional:-->
+                     <urn1:countryOfBirth>?</urn1:countryOfBirth>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:birthAbroad>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:birth>
+               <!--Optional:-->
+               <urn1:populationRegistrationLocality>
+                  <!--Optional:-->
+                  <urn1:populationRegistrationDate>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:populationRegistrationDate>
+                  <!--Optional:-->
+                  <urn1:countyCode>?</urn1:countyCode>
+                  <!--Optional:-->
+                  <urn1:municipalityCode>?</urn1:municipalityCode>
+                  <!--Optional:-->
+                  <urn1:parishCode>?</urn1:parishCode>
+                  <!--Optional:-->
+                  <urn1:propertyDesignation>?</urn1:propertyDesignation>
+                  <!--Optional:-->
+                  <urn1:fictitiousPropertyNumber>?</urn1:fictitiousPropertyNumber>
+                  <!--Optional:-->
+                  <urn1:populationRegistrationType>?</urn1:populationRegistrationType>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:populationRegistrationLocality>
+               <!--Optional:-->
+               <urn1:populationRegistrationRecord>
+                  <!--Optional:-->
+                  <urn1:syncronizationTime>?</urn1:syncronizationTime>
+                  <!--Optional:-->
+                  <urn1:notificationCase>
+                     <!--Optional:-->
+                     <urn1:recordId>?</urn1:recordId>
+                     <!--Optional:-->
+                     <urn1:notificationType>?</urn1:notificationType>
+                     <!--Optional:-->
+                     <urn1:modificationTime>?</urn1:modificationTime>
+                     <!--Optional:-->
+                     <urn1:totalRecord>?</urn1:totalRecord>
+                     <!--Optional:-->
+                     <urn1:notificationDate>
+                        <urn1:format>?</urn1:format>
+                        <urn1:value>?</urn1:value>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:notificationDate>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:notificationCase>
+                  <!--Optional:-->
+                  <urn1:historicalRecords>
+                     <!--Zero or more repetitions:-->
+                     <urn1:populationRegistrationLocality>
+                        <!--Optional:-->
+                        <urn1:populationRegistrationDate>
+                           <urn1:format>?</urn1:format>
+                           <urn1:value>?</urn1:value>
+                           <!--You may enter ANY elements at this point-->
+                        </urn1:populationRegistrationDate>
+                        <!--Optional:-->
+                        <urn1:countyCode>?</urn1:countyCode>
+                        <!--Optional:-->
+                        <urn1:municipalityCode>?</urn1:municipalityCode>
+                        <!--Optional:-->
+                        <urn1:parishCode>?</urn1:parishCode>
+                        <!--Optional:-->
+                        <urn1:propertyDesignation>?</urn1:propertyDesignation>
+                        <!--Optional:-->
+                        <urn1:fictitiousPropertyNumber>?</urn1:fictitiousPropertyNumber>
+                        <!--Optional:-->
+                        <urn1:populationRegistrationType>?</urn1:populationRegistrationType>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:populationRegistrationLocality>
+                     <!--Optional:-->
+                     <urn1:historicalAddress>
+                        <!--Optional:-->
+                        <urn1:careOf>?</urn1:careOf>
+                        <!--Optional:-->
+                        <urn1:postalAddress1>?</urn1:postalAddress1>
+                        <!--Optional:-->
+                        <urn1:postalAddress2>?</urn1:postalAddress2>
+                        <!--Optional:-->
+                        <urn1:postalCode>?</urn1:postalCode>
+                        <!--Optional:-->
+                        <urn1:city>?</urn1:city>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:historicalAddress>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:historicalRecords>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:populationRegistrationRecord>
+               <!--Optional:-->
+               <urn1:addressInformation>
+                  <!--Optional:-->
+                  <urn1:residentialAddress>
+                     <!--Optional:-->
+                     <urn1:careOf>?</urn1:careOf>
+                     <!--Optional:-->
+                     <urn1:postalAddress1>?</urn1:postalAddress1>
+                     <!--Optional:-->
+                     <urn1:postalAddress2>?</urn1:postalAddress2>
+                     <!--Optional:-->
+                     <urn1:postalCode>?</urn1:postalCode>
+                     <!--Optional:-->
+                     <urn1:city>?</urn1:city>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:residentialAddress>
+                  <!--Optional:-->
+                  <urn1:nationalKeys>
+                     <!--Optional:-->
+                     <urn1:propertyId>?</urn1:propertyId>
+                     <!--Optional:-->
+                     <urn1:addressPlaceId>?</urn1:addressPlaceId>
+                     <!--Optional:-->
+                     <urn1:apartmentId>?</urn1:apartmentId>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:nationalKeys>
+                  <!--Optional:-->
+                  <urn1:district>
+                     <!--Optional:-->
+                     <urn1:districtCode>?</urn1:districtCode>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:district>
+                  <!--Optional:-->
+                  <urn1:specialPostalAddress>
+                     <!--Optional:-->
+                     <urn1:careOf>?</urn1:careOf>
+                     <!--Optional:-->
+                     <urn1:postalAddress1>?</urn1:postalAddress1>
+                     <!--Optional:-->
+                     <urn1:postalAddress2>?</urn1:postalAddress2>
+                     <!--Optional:-->
+                     <urn1:postalCode>?</urn1:postalCode>
+                     <!--Optional:-->
+                     <urn1:city>?</urn1:city>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:specialPostalAddress>
+                  <!--Optional:-->
+                  <urn1:addressAbroad>
+                     <!--Optional:-->
+                     <urn1:postalAddress1>?</urn1:postalAddress1>
+                     <!--Optional:-->
+                     <urn1:postalAddress2>?</urn1:postalAddress2>
+                     <!--Optional:-->
+                     <urn1:postalAddress3>?</urn1:postalAddress3>
+                     <!--Optional:-->
+                     <urn1:countryCode>?</urn1:countryCode>
+                     <!--Optional:-->
+                     <urn1:addressAbroadDate>
+                        <urn1:format>?</urn1:format>
+                        <urn1:value>?</urn1:value>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:addressAbroadDate>
+                     <!--Optional:-->
+                     <urn1:votingDate>
+                        <urn1:format>?</urn1:format>
+                        <urn1:value>?</urn1:value>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:votingDate>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:addressAbroad>
+                  <!--Optional:-->
+                  <urn1:givenAddress>
+                     <!--Optional:-->
+                     <urn1:careOf>?</urn1:careOf>
+                     <!--Optional:-->
+                     <urn1:postalAddress1>?</urn1:postalAddress1>
+                     <!--Optional:-->
+                     <urn1:postalAddress2>?</urn1:postalAddress2>
+                     <!--Optional:-->
+                     <urn1:postalCode>?</urn1:postalCode>
+                     <!--Optional:-->
+                     <urn1:city>?</urn1:city>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:givenAddress>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:addressInformation>
+               <!--Zero or more repetitions:-->
+               <urn1:contactInformation>
+                  <urn1:contactType>?</urn1:contactType>
+                  <!--Optional:-->
+                  <urn1:use>?</urn1:use>
+                  <!--Optional:-->
+                  <urn1:value>?</urn1:value>
+                  <!--Optional:-->
+                  <urn1:rank>?</urn1:rank>
+                  <!--Optional:-->
+                  <urn1:comment>?</urn1:comment>
+                  <!--Optional:-->
+                  <urn1:period>
+                     <!--Optional:-->
+                     <urn1:start>?</urn1:start>
+                     <!--Optional:-->
+                     <urn1:end>?</urn1:end>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:period>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:contactInformation>
+               <!--Zero or more repetitions:-->
+               <urn1:contactPerson>
+                  <urn1:contactRelationshipType>?</urn1:contactRelationshipType>
+                  <!--Optional:-->
+                  <urn1:priorityOrder>?</urn1:priorityOrder>
+                  <!--Optional:-->
+                  <urn1:givenName>?</urn1:givenName>
+                  <!--Optional:-->
+                  <urn1:surName>?</urn1:surName>
+                  <!--Optional:-->
+                  <urn1:middleName>?</urn1:middleName>
+                  <!--Optional:-->
+                  <urn1:contactPersonAddress>
+                     <!--Optional:-->
+                     <urn1:careOf>?</urn1:careOf>
+                     <!--Optional:-->
+                     <urn1:postalAddress1>?</urn1:postalAddress1>
+                     <!--Optional:-->
+                     <urn1:postalAddress2>?</urn1:postalAddress2>
+                     <!--Optional:-->
+                     <urn1:postalCode>?</urn1:postalCode>
+                     <!--Optional:-->
+                     <urn1:city>?</urn1:city>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:contactPersonAddress>
+                  <!--Zero or more repetitions:-->
+                  <urn1:contactPersonContactInformation>
+                     <urn1:contactType>?</urn1:contactType>
+                     <!--Optional:-->
+                     <urn1:use>?</urn1:use>
+                     <!--Optional:-->
+                     <urn1:value>?</urn1:value>
+                     <!--Optional:-->
+                     <urn1:rank>?</urn1:rank>
+                     <!--Optional:-->
+                     <urn1:comment>?</urn1:comment>
+                     <!--Optional:-->
+                     <urn1:period>
+                        <!--Optional:-->
+                        <urn1:start>?</urn1:start>
+                        <!--Optional:-->
+                        <urn1:end>?</urn1:end>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:period>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:contactPersonContactInformation>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:contactPerson>
+               <!--Zero or more repetitions:-->
+               <urn1:confirmedIdentity>
+                  <!--Optional:-->
+                  <urn1:typeOfIdentification>?</urn1:typeOfIdentification>
+                  <!--Optional:-->
+                  <urn1:identificationNumber>?</urn1:identificationNumber>
+                  <!--Optional:-->
+                  <urn1:issuersOfId>?</urn1:issuersOfId>
+                  <!--Optional:-->
+                  <urn1:validDatePeriod>
+                     <!--Optional:-->
+                     <urn1:start>?</urn1:start>
+                     <!--Optional:-->
+                     <urn1:end>?</urn1:end>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:validDatePeriod>
+                  <!--Zero or more repetitions:-->
+                  <urn1:attachmentId>?</urn1:attachmentId>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:confirmedIdentity>
+               <!--Optional:-->
+               <urn1:administrativeInformation>
+                  <!--Optional:-->
+                  <urn1:categoryOfPerson>?</urn1:categoryOfPerson>
+                  <!--Optional:-->
+                  <urn1:accountCode>?</urn1:accountCode>
+                  <!--Optional:-->
+                  <urn1:comment>?</urn1:comment>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:administrativeInformation>
+               <!--Optional:-->
+               <urn1:deregistration>
+                  <!--Optional:-->
+                  <urn1:deregistrationReasonCode>?</urn1:deregistrationReasonCode>
+                  <!--Optional:-->
+                  <urn1:deregistrationDate>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:deregistrationDate>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:deregistration>
+               <!--Optional:-->
+               <urn1:maritalStatus>
+                  <!--Optional:-->
+                  <urn1:maritalStatusCode>?</urn1:maritalStatusCode>
+                  <!--Optional:-->
+                  <urn1:maritalStatusDate>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:maritalStatusDate>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:maritalStatus>
+               <!--Optional:-->
+               <urn1:immigration>
+                  <!--Optional:-->
+                  <urn1:immigrationDate>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:immigrationDate>
+                  <!--Optional:-->
+                  <urn1:rightOfResidence>?</urn1:rightOfResidence>
+                  <!--Zero or more repetitions:-->
+                  <urn1:immigrationIdentity>
+                     <urn1:personalIdentityNumber>?</urn1:personalIdentityNumber>
+                     <urn1:country>?</urn1:country>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:immigrationIdentity>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:immigration>
+               <!--Zero or more repetitions:-->
+               <urn1:citizenship>
+                  <!--Optional:-->
+                  <urn1:citizenshipCountryCode>
+                     <!--Optional:-->
+                     <urn1:countryCode>?</urn1:countryCode>
+                     <!--Optional:-->
+                     <urn1:attested>?</urn1:attested>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:citizenshipCountryCode>
+                  <!--Optional:-->
+                  <urn1:citizenshipDate>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:citizenshipDate>
+                  <!--Optional:-->
+                  <urn1:status>?</urn1:status>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:citizenship>
+               <!--Zero or more repetitions:-->
+               <urn1:relationship>
+                  <urn1:relationshipId>
+                     <!--Optional:-->
+                     <urn1:personalIdentity>
+                        <urn1:root>?</urn1:root>
+                        <!--Optional:-->
+                        <urn1:extension>?</urn1:extension>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:personalIdentity>
+                     <!--Optional:-->
+                     <urn1:dateOfBirth>
+                        <urn1:format>?</urn1:format>
+                        <urn1:value>?</urn1:value>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:dateOfBirth>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:relationshipId>
+                  <urn1:relationshipType>?</urn1:relationshipType>
+                  <!--Optional:-->
+                  <urn1:relationshipFromDate>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:relationshipFromDate>
+                  <!--Optional:-->
+                  <urn1:relationshipToDate>
+                     <urn1:format>?</urn1:format>
+                     <urn1:value>?</urn1:value>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:relationshipToDate>
+                  <!--Optional:-->
+                  <urn1:name>
+                     <!--Optional:-->
+                     <urn1:givenNameIndicator>?</urn1:givenNameIndicator>
+                     <!--Optional:-->
+                     <urn1:givenName>
+                        <urn1:name>?</urn1:name>
+                        <!--Optional:-->
+                        <urn1:attested>?</urn1:attested>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:givenName>
+                     <!--Optional:-->
+                     <urn1:middleName>
+                        <urn1:name>?</urn1:name>
+                        <!--Optional:-->
+                        <urn1:attested>?</urn1:attested>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:middleName>
+                     <!--Optional:-->
+                     <urn1:surname>
+                        <urn1:name>?</urn1:name>
+                        <!--Optional:-->
+                        <urn1:attested>?</urn1:attested>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:surname>
+                     <!--Optional:-->
+                     <urn1:notificationName>?</urn1:notificationName>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:name>
+                  <!--Optional:-->
+                  <urn1:deregistration>
+                     <!--Optional:-->
+                     <urn1:deregistrationReasonCode>?</urn1:deregistrationReasonCode>
+                     <!--Optional:-->
+                     <urn1:deregistrationDate>
+                        <urn1:format>?</urn1:format>
+                        <urn1:value>?</urn1:value>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:deregistrationDate>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:deregistration>
+                  <!--Optional:-->
+                  <urn1:status>?</urn1:status>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:relationship>
+               <!--Optional:-->
+               <urn1:updatePersonActor>
+                  <urn1:id>
+                     <urn1:root>?</urn1:root>
+                     <!--Optional:-->
+                     <urn1:extension>?</urn1:extension>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:id>
+                  <!--Optional:-->
+                  <urn1:professional>
+                     <urn1:organizationId>
+                        <urn1:root>?</urn1:root>
+                        <!--Optional:-->
+                        <urn1:extension>?</urn1:extension>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:organizationId>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:professional>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:updatePersonActor>
+               <!--Optional:-->
+               <urn1:updatePersonContactInformationActor>
+                  <urn1:id>
+                     <urn1:root>?</urn1:root>
+                     <!--Optional:-->
+                     <urn1:extension>?</urn1:extension>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:id>
+                  <!--Optional:-->
+                  <urn1:professional>
+                     <urn1:organizationId>
+                        <urn1:root>?</urn1:root>
+                        <!--Optional:-->
+                        <urn1:extension>?</urn1:extension>
+                        <!--You may enter ANY elements at this point-->
+                     </urn1:organizationId>
+                     <!--You may enter ANY elements at this point-->
+                  </urn1:professional>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:updatePersonContactInformationActor>
+               <!--Zero or more repetitions:-->
+               <urn1:attachment>
+                  <!--Optional:-->
+                  <urn1:id>?</urn1:id>
+                  <urn1:mediaType>?</urn1:mediaType>
+                  <!--Optional:-->
+                  <urn1:value>cid:3792112074</urn1:value>
+                  <!--Optional:-->
+                  <urn1:reference>?</urn1:reference>
+                  <!--You may enter ANY elements at this point-->
+               </urn1:attachment>
+               <!--You may enter ANY elements at this point-->
+            </urn1:personRecord>
+            <!--You may enter ANY elements at this point-->
+         </urn:requestedPersonRecord>
+         <!--You may enter ANY elements at this point-->
+      </urn:GetPersonsForProfileResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

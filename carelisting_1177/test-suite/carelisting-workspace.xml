@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-workspace name="Listningstjänsten" soapui-version="5.8.0" projectRoot="${workspaceDir}" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:project name="CreateListing">CreateListing/CreateListing-soapui-project.xml</con:project>
+  <con:project name="CreateListingMock">CreateListingMock/CreateListingMock-soapui-project.xml</con:project>
+  <con:project name="GetAvailableHealthcareFacilities">GetAvailableHealthcareFacilities/GetAvailableHealthcareFacilities-soapui-project.xml</con:project>
+  <con:project name="GetAvailableHealthcareFacilitiesMock">GetAvailableHealthcareFacilitiesMock/GetAvailableHealthcareFacilitiesMock-soapui-project.xml</con:project>
+  <con:project name="GetListingMock">GetListingMock/GetListingMock-soapui-project.xml</con:project>
+  <con:project name="GetListingCounty">GetListingCounty/GetListingCounty-soapui-project.xml</con:project>
+  <con:project name="GetListingCountyMock">GetListingCountyMock/GetListingCountyMock-soapui-project.xml</con:project>
+  <con:project name="GetListingTypes">GetListingTypes/GetListingTypes-soapui-project.xml</con:project>
+  <con:project name="GetListingTypesMock">GetListingTypesMock/GetListingTypesMock-soapui-project.xml</con:project>
+  <con:project name="GetAvailableHealthcarePersonnel">GetAvailableHealthcarePersonnel/GetAvailableHealthcarePersonnel-soapui-project.xml</con:project>
+  <con:project name="GetAvailableHealthcarePersonnelMock">GetAvailableHealthcarePersonnelMock/GetAvailableHealthcarePersonnelMock-soapui-project.xml</con:project>
+  <con:project name="UpdateListing">UpdateListing/UpdateListing-soapui-project.xml</con:project>
+  <con:project name="UpdateListingMock">UpdateListingMock/UpdateListingMock-soapui-project.xml</con:project>
+  <con:project name="GetListing">GetListing/GetListing-soapui-project.xml</con:project>
+  <con:collectInfoForSupport>false</con:collectInfoForSupport>
+</con:soapui-workspace>

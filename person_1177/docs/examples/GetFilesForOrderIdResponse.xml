@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:strategicresourcemanagement:persons:person:GetFilesForOrderIdResponder:3" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:GetFilesForOrderIdResponse>
+         <!--Zero or more repetitions:-->
+         <urn:multimedia>
+            <!--Optional:-->
+            <urn1:id>?</urn1:id>
+            <urn1:mediaType>?</urn1:mediaType>
+            <!--Optional:-->
+            <urn1:value>cid:854354077077</urn1:value>
+            <!--Optional:-->
+            <urn1:reference>?</urn1:reference>
+            <!--You may enter ANY elements at this point-->
+         </urn:multimedia>
+         <!--You may enter ANY elements at this point-->
+      </urn:GetFilesForOrderIdResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

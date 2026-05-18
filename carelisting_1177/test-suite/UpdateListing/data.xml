@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="./../TK-doc-sv.xsl"?>
+<testsuite>
+    <id>UpdateListing</id>
+    <description>Testsvit för att verifiera tjänsteproducenter för UpdateListing.</description>
+    <globaldata>
+        <webServiceUrl>http://localhost:8088/mockUpdateListingResponderBinding</webServiceUrl>
+		<!-- Tjänstekonsument, skickas i http-header "x-rivta-original-serviceconsumer-hsaid" -->
+		<originalServiceconsumerHsaId>SE-CONSUMER-001</originalServiceconsumerHsaId>
+		<!-- Logisk adressat och folkbokföringsregion, normalt samma värde -->
+		<logicalAddress>01</logicalAddress>
+		<homeCounty>01</homeCounty>
+		
+		<!-- Standardvärden för parametrar, kan ändras per testfall -->
+		<personIdRoot>1.2.752.129.2.1.3.1</personIdRoot>
+		<personIdExtension>195709263080</personIdExtension>
+		<listingTypeCode>PV</listingTypeCode>
+		<listingTypeCodeSystem>1.2.752.129.5.1.27</listingTypeCodeSystem>
+		<newListingCounty>13</newListingCounty>
+		
+		<!-- Parametrar för loggning -->
+		<logTestData>false</logTestData>
+		<logTestDataPath>C:/temp/SOAP-UI/</logTestDataPath>
+		<logTestDataFilesAllowed>500</logTestDataFilesAllowed>
+
+    </globaldata>
+    <testcase id="1.1 Personnummer">
+        <description>Verifierar att UpdateListing-anrop kan tas emot för invånare med personnummer, utan att listningstyp är angiven.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+    <testcase id="1.2 Samordningsnummer">
+        <description>Verifierar att UpdateListing-anrop kan tas emot för invånare med samordningsnummer, utan att listningstyp är angiven.
+		</description>
+        <data>
+			<personIdExtension>196812732391</personIdExtension>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+    <testcase id="1.3.1 listingType national">
+        <description>Verifierar att UpdateListing-anrop med nationell listningstyp kan tas emot.
+		</description>
+        <data>
+			<!-- <listingTypeCode>PV</listingTypeCode> -->
+			<!-- <listingTypeCodeSystem>1.2.752.129.5.1.27</listingTypeCodeSystem> -->
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+    <testcase id="1.3.2 listingType local">
+        <description>Verifierar att UpdateListing-anrop med lokal listningstyp kan tas emot (om regionen erbjuder stöd för sådan).
+			Upprepa testet med de olika listningstyper som producenten skall stödja.
+		</description>
+        <data>
+			<listingTypeCode>LOKALTYP</listingTypeCode>
+			<listingTypeCodeSystem>TBD_LOKAL_LISTNINGSTYP</listingTypeCodeSystem>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+    <testcase id="1.4 homeCounty other">
+        <description>Verifierar att producenten kan ta emot UpdateListing-anrop för invånare med annan folkbokföringsregion.
+		Motsvarar att en omlistning skett av en invånare som tidigare varit utomlänslistad i producentens region.
+		</description>
+        <data>
+			<homeCounty>02</homeCounty>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+
+    <testcase id="3.1 SoapFault">
+		<description>Verifierar att ett Soap Fault-meddelande returneras vid tekniskt fel.
+			<br/>Testet förutsätter att miljön kan modifieras så att ett tekniskt fel uppstår.
+		</description>
+        <data>
+			<personIdExtension>194003189083</personIdExtension>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.1 Error listingType">
+		<description>Verifierar att ett korrekt ERROR-svar returneras om en okänd listningstyp anges.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+    <testcase id="3.2.2 Error incomplete">
+		<description>Verifierar att ett korrekt ERROR-svar returneras om obligatorisk information utelämnas.
+		</description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <newListingCounty></newListingCounty> -->
+        </data>
+    </testcase>
+
+	<testcase id="4.1 Encoding_HeaderProlog">
+        <description>Verifierar att 
+          <br/>1. Content-Type header attributet charset har värdet UTF-8 eller UTF-16.
+          <br/>2. XML Prolog attributet encoding har värdet UTF-8 or UTF-16.
+          <br/>3. Om båda är satta ska de ha samma värde.
+        </description>
+        <data>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <healthcareFacilityHSAId></healthcareFacilityHSAId> -->
+			<!-- <listingTypeCode></listingTypeCode> -->
+        </data>
+    </testcase>
+</testsuite>

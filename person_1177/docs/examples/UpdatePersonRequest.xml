@@ -1,0 +1,233 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:UpdatePersonResponder:3" xmlns:urn2="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header>
+      <urn:LogicalAddress>?</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:UpdatePerson>
+         <urn1:actor>
+            <urn2:id>
+               <urn2:root>?</urn2:root>
+               <!--Optional:-->
+               <urn2:extension>?</urn2:extension>
+               <!--You may enter ANY elements at this point-->
+            </urn2:id>
+            <!--Optional:-->
+            <urn2:professional>
+               <urn2:organizationId>
+                  <urn2:root>?</urn2:root>
+                  <!--Optional:-->
+                  <urn2:extension>?</urn2:extension>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:organizationId>
+               <!--You may enter ANY elements at this point-->
+            </urn2:professional>
+            <!--You may enter ANY elements at this point-->
+         </urn1:actor>
+         <!--Optional:-->
+         <urn1:personId>
+            <urn2:root>?</urn2:root>
+            <!--Optional:-->
+            <urn2:extension>?</urn2:extension>
+            <!--You may enter ANY elements at this point-->
+         </urn1:personId>
+         <!--Optional:-->
+         <urn1:gender>?</urn1:gender>
+         <!--Optional:-->
+         <urn1:versionToUpdate>?</urn1:versionToUpdate>
+         <!--Optional:-->
+         <urn1:name>
+            <!--Optional:-->
+            <urn2:givenNameIndicator>?</urn2:givenNameIndicator>
+            <!--Optional:-->
+            <urn2:givenName>
+               <urn2:name>?</urn2:name>
+               <!--Optional:-->
+               <urn2:attested>?</urn2:attested>
+               <!--You may enter ANY elements at this point-->
+            </urn2:givenName>
+            <!--Optional:-->
+            <urn2:middleName>
+               <urn2:name>?</urn2:name>
+               <!--Optional:-->
+               <urn2:attested>?</urn2:attested>
+               <!--You may enter ANY elements at this point-->
+            </urn2:middleName>
+            <!--Optional:-->
+            <urn2:surname>
+               <urn2:name>?</urn2:name>
+               <!--Optional:-->
+               <urn2:attested>?</urn2:attested>
+               <!--You may enter ANY elements at this point-->
+            </urn2:surname>
+            <!--Optional:-->
+            <urn2:notificationName>?</urn2:notificationName>
+            <!--You may enter ANY elements at this point-->
+         </urn1:name>
+         <!--Optional:-->
+         <urn1:birth>
+            <!--Optional:-->
+            <urn2:dateOfBirth>
+               <urn2:format>?</urn2:format>
+               <urn2:value>?</urn2:value>
+               <!--You may enter ANY elements at this point-->
+            </urn2:dateOfBirth>
+            <!--Optional:-->
+            <urn2:placeOfBirthSweden>
+               <!--Optional:-->
+               <urn2:birthCountyCode>?</urn2:birthCountyCode>
+               <!--Optional:-->
+               <urn2:birthParish>?</urn2:birthParish>
+               <!--You may enter ANY elements at this point-->
+            </urn2:placeOfBirthSweden>
+            <!--Optional:-->
+            <urn2:birthAbroad>
+               <!--Optional:-->
+               <urn2:placeOfBirthAbroad>
+                  <!--Optional:-->
+                  <urn2:placeOfBirthAbroad>?</urn2:placeOfBirthAbroad>
+                  <!--Optional:-->
+                  <urn2:attested>?</urn2:attested>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:placeOfBirthAbroad>
+               <!--Optional:-->
+               <urn2:countryOfBirth>?</urn2:countryOfBirth>
+               <!--You may enter ANY elements at this point-->
+            </urn2:birthAbroad>
+            <!--You may enter ANY elements at this point-->
+         </urn1:birth>
+         <!--Zero or more repetitions:-->
+         <urn1:relationship>
+            <urn2:relationshipId>
+               <!--Optional:-->
+               <urn2:personalIdentity>
+                  <urn2:root>?</urn2:root>
+                  <!--Optional:-->
+                  <urn2:extension>?</urn2:extension>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:personalIdentity>
+               <!--Optional:-->
+               <urn2:dateOfBirth>
+                  <urn2:format>?</urn2:format>
+                  <urn2:value>?</urn2:value>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:dateOfBirth>
+               <!--You may enter ANY elements at this point-->
+            </urn2:relationshipId>
+            <urn2:relationshipType>?</urn2:relationshipType>
+            <!--Optional:-->
+            <urn2:relationshipFromDate>
+               <urn2:format>?</urn2:format>
+               <urn2:value>?</urn2:value>
+               <!--You may enter ANY elements at this point-->
+            </urn2:relationshipFromDate>
+            <!--Optional:-->
+            <urn2:relationshipToDate>
+               <urn2:format>?</urn2:format>
+               <urn2:value>?</urn2:value>
+               <!--You may enter ANY elements at this point-->
+            </urn2:relationshipToDate>
+            <!--Optional:-->
+            <urn2:name>
+               <!--Optional:-->
+               <urn2:givenNameIndicator>?</urn2:givenNameIndicator>
+               <!--Optional:-->
+               <urn2:givenName>
+                  <urn2:name>?</urn2:name>
+                  <!--Optional:-->
+                  <urn2:attested>?</urn2:attested>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:givenName>
+               <!--Optional:-->
+               <urn2:middleName>
+                  <urn2:name>?</urn2:name>
+                  <!--Optional:-->
+                  <urn2:attested>?</urn2:attested>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:middleName>
+               <!--Optional:-->
+               <urn2:surname>
+                  <urn2:name>?</urn2:name>
+                  <!--Optional:-->
+                  <urn2:attested>?</urn2:attested>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:surname>
+               <!--Optional:-->
+               <urn2:notificationName>?</urn2:notificationName>
+               <!--You may enter ANY elements at this point-->
+            </urn2:name>
+            <!--Optional:-->
+            <urn2:deregistration>
+               <!--Optional:-->
+               <urn2:deregistrationReasonCode>?</urn2:deregistrationReasonCode>
+               <!--Optional:-->
+               <urn2:deregistrationDate>
+                  <urn2:format>?</urn2:format>
+                  <urn2:value>?</urn2:value>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:deregistrationDate>
+               <!--You may enter ANY elements at this point-->
+            </urn2:deregistration>
+            <!--Optional:-->
+            <urn2:status>?</urn2:status>
+            <!--You may enter ANY elements at this point-->
+         </urn1:relationship>
+         <!--Optional:-->
+         <urn1:givenAddress>
+            <!--Optional:-->
+            <urn2:careOf>?</urn2:careOf>
+            <!--Optional:-->
+            <urn2:postalAddress1>?</urn2:postalAddress1>
+            <!--Optional:-->
+            <urn2:postalAddress2>?</urn2:postalAddress2>
+            <!--Optional:-->
+            <urn2:postalCode>?</urn2:postalCode>
+            <!--Optional:-->
+            <urn2:city>?</urn2:city>
+            <!--You may enter ANY elements at this point-->
+         </urn1:givenAddress>
+         <!--Optional:-->
+         <urn1:deregistration>
+            <!--Optional:-->
+            <urn2:deregistrationReasonCode>?</urn2:deregistrationReasonCode>
+            <!--Optional:-->
+            <urn2:deregistrationDate>
+               <urn2:format>?</urn2:format>
+               <urn2:value>?</urn2:value>
+               <!--You may enter ANY elements at this point-->
+            </urn2:deregistrationDate>
+            <!--You may enter ANY elements at this point-->
+         </urn1:deregistration>
+         <!--Optional:-->
+         <urn1:administrativeInformation>
+            <!--Optional:-->
+            <urn2:categoryOfPerson>?</urn2:categoryOfPerson>
+            <!--Optional:-->
+            <urn2:accountCode>?</urn2:accountCode>
+            <!--Optional:-->
+            <urn2:comment>?</urn2:comment>
+            <!--You may enter ANY elements at this point-->
+         </urn1:administrativeInformation>
+         <!--Zero or more repetitions:-->
+         <urn1:confirmedIdentity>
+            <!--Optional:-->
+            <urn2:typeOfIdentification>?</urn2:typeOfIdentification>
+            <!--Optional:-->
+            <urn2:identificationNumber>?</urn2:identificationNumber>
+            <!--Optional:-->
+            <urn2:issuersOfId>?</urn2:issuersOfId>
+            <!--Optional:-->
+            <urn2:validDatePeriod>
+               <!--Optional:-->
+               <urn2:start>?</urn2:start>
+               <!--Optional:-->
+               <urn2:end>?</urn2:end>
+               <!--You may enter ANY elements at this point-->
+            </urn2:validDatePeriod>
+            <!--Zero or more repetitions:-->
+            <urn2:attachmentId>?</urn2:attachmentId>
+            <!--You may enter ANY elements at this point-->
+         </urn1:confirmedIdentity>
+         <!--You may enter ANY elements at this point-->
+      </urn1:UpdatePerson>
+   </soapenv:Body>
+</soapenv:Envelope>

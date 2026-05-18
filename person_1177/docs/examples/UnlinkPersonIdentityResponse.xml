@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:strategicresourcemanagement:persons:person:UnlinkPersonIdentityResponder:3" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:UnlinkPersonIdentityResponse>
+         <urn:result>
+            <urn1:resultCode>?</urn1:resultCode>
+            <!--Optional:-->
+            <urn1:resultText>?</urn1:resultText>
+            <!--You may enter ANY elements at this point-->
+         </urn:result>
+         <!--You may enter ANY elements at this point-->
+      </urn:UnlinkPersonIdentityResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

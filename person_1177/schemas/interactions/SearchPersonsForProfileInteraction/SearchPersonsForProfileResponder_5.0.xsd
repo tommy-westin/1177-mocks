@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Inera AB licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->    
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='urn:riv:strategicresourcemanagement:persons:person:SearchPersonsForProfileResponder:5'                
+    xmlns:strategicresourcemanagementpersonsperson='urn:riv:strategicresourcemanagement:persons:person:5'
+    targetNamespace='urn:riv:strategicresourcemanagement:persons:person:SearchPersonsForProfileResponder:5'
+    elementFormDefault='qualified'
+    attributeFormDefault='unqualified'
+    version='5.0'>
+
+    <xs:import schemaLocation='../../core_components/strategicresourcemanagement_persons_person_5.0.xsd' namespace='urn:riv:strategicresourcemanagement:persons:person:5' />
+
+
+    <xs:element name='SearchPersonsForProfile' type='tns:SearchPersonsForProfileType'/>
+
+    <xs:complexType name='SearchPersonsForProfileType'>
+        <xs:annotation>
+            <xs:documentation>
+                Tjänst för att söka uppgifter för 0..* personidentiteter utifrån sökparametrar definierad enligt en bestämd syntax. 
+                Mängden data i svaret är dels beroende av den profil som efterfrågas, dels angivna sökkriterier. Se kap 8 för mer information om profiler, bl.a om vad som gäller då personidentiteten har sekretessmarkering. Antalet personidentiteter som kan returneras synkront är begränsat till max 500st. Om resultatet överstiger 500 poster ska producenten avbryta sökningen och generera ett Soapfault med angivandet av lämplig feltext.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="query" type="xs:string"/>
+            <xs:element name="queryLanguage" type="xs:string"/>
+            <xs:element name="profile" type="strategicresourcemanagementpersonsperson:LookupProfileType"/>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name='SearchPersonsForProfileResponse' type='tns:SearchPersonsForProfileResponseType'/>
+
+    <xs:complexType name='SearchPersonsForProfileResponseType'>
+        <xs:annotation>
+            <xs:documentation>
+                Tjänst för att söka uppgifter för 0..* personidentiteter utifrån sökparametrar definierad enligt en bestämd syntax. 
+                Mängden data i svaret är dels beroende av den profil som efterfrågas, dels angivna sökkriterier. Se kap 8 för mer information om profiler, bl.a om vad som gäller då personidentiteten har sekretessmarkering. Antalet personidentiteter som kan returneras synkront är begränsat till max 500st. Om resultatet överstiger 500 poster ska producenten avbryta sökningen och generera ett Soapfault med angivandet av lämplig feltext.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="personRecord" type="strategicresourcemanagementpersonsperson:PersonRecordType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="./../TK-doc-sv.xsl"?>
+<testsuite>
+    <id>GetListingTypes</id>
+    <description>Testsvit för att verifiera tjänsteproducenter för GetListingTypes.</description>
+    <globaldata>
+        <webServiceUrl>http://localhost:8088/mockGetListingTypesResponderBinding</webServiceUrl>
+		<!-- Tjänstekonsument, skickas i http-header "x-rivta-original-serviceconsumer-hsaid" -->
+		<originalServiceconsumerHsaId>SE-CONSUMER-001</originalServiceconsumerHsaId>
+		<!-- Logisk adressat (länskod)-->
+		<logicalAddress>01</logicalAddress>
+		
+		<!-- Standardvärden för parametrar, kan ändras per testfall -->
+		<personIdRoot>1.2.752.129.2.1.3.1</personIdRoot>
+		<personIdExtension>195709263080</personIdExtension>
+		<homeCounty>01</homeCounty>
+		
+		<!-- Parametrar för loggning -->
+		<logTestData>false</logTestData>
+		<logTestDataPath>C:/temp/SOAP-UI/</logTestDataPath>
+		<logTestDataFilesAllowed>500</logTestDataFilesAllowed>
+
+    </globaldata>
+    <testcase id="1.1 Personnummer">
+        <description>Verifierar att listningstyper som är gällande för en specifik invånare med personnummer kan returneras. Ange förväntat antal typer.
+		</description>
+        <data>
+			<numberOfListingTypes>2</numberOfListingTypes>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <personIdExtension></personIdExtension> -->
+			<!-- <homeCounty></homeCounty> -->
+        </data>
+    </testcase>
+    <testcase id="1.2 Samordningsnummer">
+        <description>Verifierar att listningstyper som är gällande för en specifik invånare med samordningsnummer kan returneras. Ange förväntat antal typer.
+		</description>
+        <data>
+			<personIdExtension>196812732391</personIdExtension>
+			<numberOfListingTypes>2</numberOfListingTypes>
+			<!-- Avkommentera för att ersätta standardvärden -->
+			<!-- <homeCounty></homeCounty> -->
+        </data>
+    </testcase>
+    <testcase id="1.3 All listingTypes">
+        <description>Verifierar att alla listningstyper som en utpekad region erbjuder kan returneras. Ange förväntat antal typer.
+		</description>
+        <data>
+			<numberOfListingTypes>2</numberOfListingTypes>
+        </data>
+    </testcase>
+	
+    <testcase id="3.1 SoapFault">
+		<description>Verifierar att ett Soap Fault-meddelande returneras vid tekniskt fel.
+			<br/>Testet förutsätter att miljön kan modifieras så att ett tekniskt fel uppstår.
+		</description>
+        <data>
+        </data>
+    </testcase>
+
+	<testcase id="4.1 Encoding_HeaderProlog">
+        <description>Verifierar att 
+          <br/>1. Content-Type header attributet charset har värdet UTF-8 eller UTF-16.
+          <br/>2. XML Prolog attributet encoding har värdet UTF-8 or UTF-16.
+          <br/>3. Om båda är satta ska de ha samma värde.
+        </description>
+        <data>
+        </data>
+    </testcase>
+	
+    <testcase id="5.1 listingTypes national">
+		<description>Verifierar att den nationella listningstypen för primärvård kan returneras.
+		</description>
+        <data>
+        </data>
+    </testcase>
+    <testcase id="5.2 listingTypes local">
+		<description>Verifierar att en lokal listningskod kan returneras (om regionen erbjuder stöd för sådan). Upprepa testet för alla aktuella koder.
+		</description>
+        <data>
+			<listingTypeCode>LOKALTYP</listingTypeCode>
+			<listingTypeCodeSystem>TBD_LOKAL_LISTNINGSTYP</listingTypeCodeSystem>
+        </data>
+    </testcase>
+</testsuite>

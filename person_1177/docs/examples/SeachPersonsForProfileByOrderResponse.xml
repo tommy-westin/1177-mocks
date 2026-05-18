@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:strategicresourcemanagement:persons:person:SearchPersonsForProfileByOrderResponder:3">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:SearchPersonsForProfileByOrderResponse>
+         <!--Optional:-->
+         <urn:orderId>?</urn:orderId>
+         <!--You may enter ANY elements at this point-->
+      </urn:SearchPersonsForProfileByOrderResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

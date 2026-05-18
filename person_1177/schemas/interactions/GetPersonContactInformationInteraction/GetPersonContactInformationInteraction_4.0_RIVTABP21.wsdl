@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Inera AB licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->    
+<wsdl:definitions name='GetPersonContactInformationInteraction'
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tjsr='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationResponder:4'
+    xmlns:itr='urn:riv:itintegration:registry:1'
+    xmlns:tns='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformation:4:rivtabp21'
+    targetNamespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformation:4:rivtabp21'>
+
+    <wsdl:documentation>
+         Tjänsteinteraktionens namn: GetPersonContactInformation
+         Beskrivning: 
+           Tjänst för att hämta information om kontaktinformation till personen. Antingen via någon tjänst med vilken personen själv har matat in uppgifterna (t.ex via 1177) eller av t.ex en vårdaktör via vårdaktörens tjänst efter uppgivande av personen. Kontaktuppgifterna består dels av vilka kontaktvägar (telefon, mail etc) som personen själv i fråga kan nås på. Dels av kontaktpersoner och dess kontaktuppgifter som personen uppger. Kontaktpersoner kan t.ex vara anhöriga som vårdens aktörer kan ha behov av att kontakta kring personens vård.
+         Revisioner: 
+         Tjänstedomän: strategicresourcemanagement:persons:person
+         Tjänsteinteraktionstyp: Fråga-Svar
+         WS-profil: RIVTABP21
+         Förvaltas av: Inera AB
+    </wsdl:documentation>
+    
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformation:4:rivtabp21'>
+            <xs:import schemaLocation='GetPersonContactInformationResponder_4.0.xsd' namespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationResponder:4' />
+            <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
+        </xs:schema>
+    </wsdl:types>
+    
+        
+    <wsdl:message name='GetPersonContactInformationRequest'>
+        <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
+            <wsdl:documentation>http://tempuri.org</wsdl:documentation>
+        </wsdl:part>
+    
+        <wsdl:part name='parameters' element='tjsr:GetPersonContactInformation' />
+    </wsdl:message>
+
+    <wsdl:message name='GetPersonContactInformationResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetPersonContactInformationResponse' />
+    </wsdl:message>
+
+    <wsdl:portType name='GetPersonContactInformationResponderInterface'>
+        <wsdl:operation name='GetPersonContactInformation'>
+            <wsdl:input message='tns:GetPersonContactInformationRequest' />
+            <wsdl:output message='tns:GetPersonContactInformationResponse' />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetPersonContactInformationResponderBinding' type='tns:GetPersonContactInformationResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+        <wsdl:operation name='GetPersonContactInformation'>
+            <soap:operation soapAction='urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationResponder:4:GetPersonContactInformation' style='document' />
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetPersonContactInformationRequest' part='LogicalAddress' />
+                <soap:body use='literal' parts='parameters' />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal' />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetPersonContactInformationResponderService'>
+        <wsdl:port name='GetPersonContactInformationResponderPort' binding='tns:GetPersonContactInformationResponderBinding'>
+            <soap:address location='http://tempuri.org' />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

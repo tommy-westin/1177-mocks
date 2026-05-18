@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="01b7ee2b-8432-4b39-8035-8bf35ab80c3e" activeEnvironment="Default" name="GetListingCounty" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="c542bd97-4cdf-4755-96e4-0d9de1945658" wsaVersion="NONE" name="GetListingCountyResponderBinding" type="wsdl" bindingName="{urn:riv:supportprocess:logistics:carelisting:GetListingCounty:2:rivtabp21}GetListingCountyResponderBinding" soapVersion="1_1" anonymous="optional" definition="../../schemas/interactions/GetListingCountyInteraction/GetListingCountyInteraction_2.0_RIVTABP21.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/NMT/Repon/Listning/riv.supportprocess.logistics.carelisting/schemas/interactions/GetListingCountyInteraction/GetListingCountyInteraction_2.0_RIVTABP21.wsdl"><con:part><con:url>file:/C:/NMT/Repon/Listning/riv.supportprocess.logistics.carelisting/schemas/interactions/GetListingCountyInteraction/GetListingCountyInteraction_2.0_RIVTABP21.wsdl</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Regioner licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<wsdl:definitions name="GetListingCountyInteraction" targetNamespace="urn:riv:supportprocess:logistics:carelisting:GetListingCounty:2:rivtabp21" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tjsr="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:tjsi="urn:riv:supportprocess:logistics:carelisting:GetListingCountyInitiator:2" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:GetListingCounty:2:rivtabp21" xmlns:itr="urn:riv:itintegration:registry:1">
+  <wsdl:documentation>Tjänsteinteraktionens namn: GetListingCountyInteraction
+		Beskrivning: 
+		  Hämta invånares aktuella listningsregion
+		Revisioner: 
+		Tjänstedomän: supportprocess:logistics:carelisting
+		Tjänsteinteraktionstyp: Fråga-Svar
+		WS-profil: RIVTABP21
+		Förvaltas av: Sveriges Kommuner och Regioner</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:GetListingCounty:2:rivtabp21">
+      <xs:import schemaLocation="GetListingCountyResponder_2.0.xsd" namespace="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2"/>
+      <xs:import schemaLocation="../../core_components/itintegration_registry_1.0.xsd" namespace="urn:riv:itintegration:registry:1"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetListingCountyRequest">
+    <wsdl:part name="LogicalAddress" element="itr:LogicalAddress">
+      <wsdl:documentation>The organisation number of the receiving insurance institution</wsdl:documentation>
+    </wsdl:part>
+    <wsdl:part name="parameters" element="tjsr:GetListingCounty"/>
+  </wsdl:message>
+  <wsdl:message name="GetListingCountyResponse">
+    <wsdl:part name="parameters" element="tjsr:GetListingCountyResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="GetListingCountyResponderInterface">
+    <wsdl:operation name="GetListingCounty">
+      <wsdl:input message="tns:GetListingCountyRequest"/>
+      <wsdl:output message="tns:GetListingCountyResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetListingCountyResponderBinding" type="tns:GetListingCountyResponderInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetListingCounty">
+      <soap:operation soapAction="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2:GetListingCounty" style="document"/>
+      <wsdl:input>
+        <soap:header use="literal" message="tns:GetListingCountyRequest" part="LogicalAddress"/>
+        <soap:body use="literal" parts="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetListingCountyResponderService">
+    <wsdl:port name="GetListingCountyResponderPort" binding="tns:GetListingCountyResponderBinding">
+      <soap:address location="http://tempuri.org"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\NMT\Repon\Listning\riv.supportprocess.logistics.carelisting\schemas\interactions\GetListingCountyInteraction\GetListingCountyResponder_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Regioner licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:core="urn:riv:supportprocess:logistics:carelisting:2">
+  <xs:import schemaLocation="../../core_components/supportprocess_logistics_carelisting_2.0.xsd" namespace="urn:riv:supportprocess:logistics:carelisting:2"/>
+  <xs:element name="GetListingCounty" type="tns:GetListingCountyType"/>
+  <xs:element name="GetListingCountyResponse" type="tns:GetListingCountyResponseType"/>
+  <xs:complexType name="GetListingCountyType">
+    <xs:sequence>
+      <xs:element name="actor" type="core:ActorType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="personId" type="core:IIType"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetListingCountyResponseType">
+    <xs:sequence>
+      <xs:element name="listingCounties" type="core:IIType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="resultCode" type="core:ResultCodeEnum" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="resultText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\NMT\Repon\Listning\riv.supportprocess.logistics.carelisting\schemas\core_components\supportprocess_logistics_carelisting_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:2">
+  <xs:complexType name="IIType">
+    <xs:sequence>
+      <xs:element name="root" type="xs:string"/>
+      <xs:element name="extension" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CVType">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="codeSystem" type="xs:string"/>
+      <xs:element name="codeSystemName" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeSystemVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+      <xs:element name="originalText" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="HSAIdType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="HealthcareFacilityType">
+    <xs:annotation>
+      <xs:documentation>Vårdinrättning/vårdenhet som ansvarar för en person som listat sig hos dem.
+            Det är denna inrättning som får ekonomisk ersättning för personen.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="id" type="tns:HSAIdType"/>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Namn på vårdenheten.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasQueue" type="xs:boolean"/>
+      <xs:element name="supportedListingTypes" type="tns:CVType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Lista med listningstyper som vårdeneheten stödjer. Kan utelämnas om information
+                saknas eller om informationen inte behövs i kontexten där entiteten är tänkt att användas i.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supportsHealthcarePersonnel" type="xs:boolean"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListingHealthcareFacilityType">
+    <xs:sequence>
+      <xs:element name="validFromDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="validToDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="listingType" type="tns:CVType"/>
+      <xs:element name="healthcareFacility" type="tns:HealthcareFacilityType"/>
+      <xs:element name="healthcarePersonnel" type="tns:HealthcarePersonnelType" minOccurs="0"/>
+      <xs:element name="isInQueue" type="xs:boolean"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HealthcarePersonnelType">
+    <xs:sequence>
+      <xs:element name="id" type="tns:HSAIdType"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ResultCodeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="INFO"/>
+      <xs:enumeration value="ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED"/>
+      <xs:enumeration value="ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT"/>
+      <xs:enumeration value="ERROR_GUARDIAN_CONSENT_NEEDED"/>
+      <xs:enumeration value="ERROR_AGE_LIMIT"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ActorType">
+    <xs:sequence>
+      <xs:element name="actorId" type="tns:IIType"/>
+      <xs:element name="actorType" type="tns:ActorTypeEnum"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ActorTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CITIZEN"/>
+      <xs:enumeration value="GUARDIAN"/>
+      <xs:enumeration value="REGION"/>
+      <xs:enumeration value="PRIVATE_CAREGIVER"/>
+      <xs:enumeration value="SELF_OWNED_CAREGIVER"/>
+      <xs:enumeration value="HEALTHCARE_ADVISER"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\NMT\Repon\Listning\riv.supportprocess.logistics.carelisting\schemas\core_components\itintegration_registry_1.0.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:riv:itintegration:registry:1" elementFormDefault="qualified" version="1.0" xmlns="urn:riv:itintegration:registry:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>Beskrivning: 	Grundläggande informationsobjekt för domänen itintegration:registry (adressering av tjänster)
+			
+			Revisionshistorik: 2011-06-27 Mats Ekhammar, Callista Enterprise AB
+				Added ServiceContractType
+			
+			Datum:			2011-05-04
+			Beskrivning:	Initial version
+			Författare:		marcus.krantz@callistaenterprise.se</xs:documentation>
+  </xs:annotation>
+  <xs:element name="LogicalAddress" type="LogicalAddressType"/>
+  <xs:element name="ServiceContract" type="ServiceContractType"/>
+  <xs:simpleType name="LogicalAddressType">
+    <xs:annotation>
+      <xs:documentation>Defines the type for logical address according to national reference architecture.
+				Superseeds wsa:To as type for logical address header in RIVTA 2.1.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="ServiceContractType">
+    <xs:annotation>
+      <xs:documentation>Type which describes a service contract. Used in interaction GetSupportedServiceContracts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ServiceContractNamespace" type="xs:anyURI"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://tempuri.org</con:endpoint></con:endpoints><con:operation id="c130f1ca-0891-443d-8590-6147935bbff8" isOneWay="false" action="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2:GetListingCounty" name="GetListingCounty" bindingOperationName="GetListingCounty" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b6003b36-6d2d-4b38-9f92-6cc6690ce4c3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://tempuri.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>?</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:personId>\r
+            <urn2:root>?</urn2:root>\r
+            <!--Optional:-->\r
+            <urn2:extension>?</urn2:extension>\r
+            <!--You may enter ANY elements at this point-->\r
+         </urn1:personId>\r
+         <!--You may enter ANY elements at this point-->\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2:GetListingCounty"/></con:call></con:operation></con:interface><con:testSuite id="f7415e02-59b4-4239-b1ce-bd7ef5e0682d" name="1 Basic functionality"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="9a26099c-4efb-40e4-bca1-306f8bfc95e0" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="1.1 Personnummer" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="11154862-f05c-4ce3-b9b0-27b2f7347ae0"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="2eab316a-40c4-4a02-b388-deab33368eec"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6292b894-11f7-47fa-ba38-c2d8716a4b65" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="1.2 Samordningsnummer" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="3d569ada-d60d-4544-91b6-9843bf4c2ce1"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="33e6dcf4-0e92-4fd5-8d02-98a8750fe58d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>1.2.752.129.2.1.3.3</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>1.2.752.129.2.1.3.3</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="9342912e-7931-4454-ad72-7ee67a0152ee" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="c45a1c97-705a-4f15-b669-a8e47cff7d41" name="2 Optional functionality"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b0221f67-a100-41dd-9b79-25b2ae0ab73c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.1.1 actor_citizen" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="a22c71fc-1be1-437f-93c4-1010015aaaa4"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="9217ee6e-3d34-4757-830d-6372707eb534"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="97cfee08-7509-4937-bb61-790c78b71ee2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.1.2 actor_guardian" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="9109eec2-80b2-4a4c-94dc-b25c6efaa8af"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="8fd881c3-005c-41cf-ad89-84e3a2f70158"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${guardianIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>GUARDIAN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="861d714b-99e5-4cb8-bfc8-2f2463f3f9f3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.1.3 actor_region" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="b178b1e6-da50-457c-b437-44282830b58e"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="9155e21e-7bf5-4b1b-8986-5e03a4d2042d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${organizationIdRoot}</urn2:root>
+               <urn2:extension>${organizationIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>REGION</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="309ae3b0-076a-4caf-8454-f8509e98516b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.1.4 actor_private_caregiver" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="a816c416-6faf-4862-8dc2-4f15987de73e"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="4f28ec59-6ec0-4944-b71d-129be79ea54e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${organizationIdRoot}</urn2:root>
+               <urn2:extension>${organizationIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>PRIVATE_CAREGIVER</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d25944c9-c6c2-428b-be32-76337d22af84" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.1.5 actor_self_owned_caregiver" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="bcc3398d-1714-4e3a-9fc9-d5a3b7a85a77"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="bace9a85-c538-43bf-a030-587a1930653e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${organizationIdRoot}</urn2:root>
+               <urn2:extension>${organizationIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>SELF_OWNED_CAREGIVER</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="3b678590-22b5-4b54-82c0-9d357ba93271" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.1.6 actor_healthcare_adviser" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="0bf808a3-e124-406a-b422-6ae400556c78"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="bbd87db1-1f83-4d63-b1e0-131ace6f04d3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${organizationIdRoot}</urn2:root>
+               <urn2:extension>${organizationIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>HEALTHCARE_ADVISER</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="e775a8e2-2a55-4fd7-a9e3-c0acaebcfda7" name="3 Error handling"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="47108131-4032-4454-99ac-3b44cec8ad0c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="3.1 SoapFault" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="aa9b1fde-c9e4-4272-8a15-47463a400d2d"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="4aa37434-56ee-47e5-9eba-f062eda48b61"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">&#13;
+  &lt;con:entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}"/>&#13;
+  &lt;con:entry key="x-mock-response" value="SoapFault"/>&#13;
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion" id="8aac0909-72bf-4801-9f9d-d8427e356e3d" name="SOAP Fault"/><con:assertion type="GroovyScriptAssertion" id="1b23a39c-4180-4f85-8767-1e7935186723" name="Loggning"><con:configuration><scriptText>//Behövs för att loggningen ska fungera
+import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="7628921a-be84-4aff-895c-0b8da296ab2a" name="4 Content - Common"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="6b9f7ed5-a9a7-4419-a488-67be4da02762" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="4.1 Encoding_HeaderProlog" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="d3f313d4-aecd-4218-bf5b-8f902f22860f"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="636c7fbb-a90a-4e19-9847-df33c89e66c5"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert valid encoding"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange,log)
+ca.assertValidEncoding()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="bff005d9-e866-48fe-ab1d-d765cf02b9c5" name="5 Content - ContractSpecific"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b2daf227-fb33-4a04-a6bc-da64f9215103" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="5.1 listingCounties home" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="669b15ff-4027-4bf9-ac7f-5af928e3874f"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="a3e01bf9-5341-497b-8517-c2aac91f3ee8"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertSpecificValueInAnyRecord("/urn:listingCounties/urn1:extension", context.logicalAddress)</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="96f67309-810a-4c06-9d8a-459519557b63" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="5.2 listingCounties other" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="dccd0b22-5e2b-4372-b483-45931d7b01ae"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="cf3ea7c3-b9e9-47fc-8586-b2d9c1f0337f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+                  <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertSpecificValueInAnyRecord("/urn:listingCounties/urn1:extension", context.listingCounty)
+assert context.listingCounty != context.logicalAddress : "Expected listing county different from logicalAddress"</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="9673a57b-f28e-4e02-a71c-885b59517e4b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="5.3 listingCounties none" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="8ee7cd56-bec5-4a7c-b12b-51a1135e1c10"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="802a81be-c986-4277-b675-4ae562da1e48"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">&#13;
+  &lt;con:entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}"/>&#13;
+  &lt;con:entry key="x-mock-response" value="EmptyResponse"/>&#13;
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertExactNumberOfRecords(0)</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="fd368916-7744-4d82-b520-f500dabe03cb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="5.4 listingCounties multi" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="c3878a27-8b45-4270-9848-ab5c5fbfb902"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetListingCounty" id="96db93a2-1042-4b13-bb59-738f492eaaf5"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetListingCountyResponderBinding</con:interface><con:operation>GetListingCounty</con:operation><con:request name="Call GetListingCounty" id="2e9383f2-8ead-42e5-a10d-1e4930c48009"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetListingCounty>\r
+         <urn1:actor>
+            <urn2:actorId>
+               <urn2:root>${personIdRoot}</urn2:root>
+               <urn2:extension>${personIdExtension}</urn2:extension>
+            </urn2:actorId>
+            <urn2:actorType>CITIZEN</urn2:actorType>
+         </urn1:actor>
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+      </urn1:GetListingCounty>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="80937da8-d15d-427a-add0-55e5d386caef"/><con:assertion type="Schema Compliance" id="85d4549f-2e45-4ebe-99f0-0def19143479"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="d37e6bb9-0ba3-46dd-b767-dec7e96f7c78"/><con:assertion type="GroovyScriptAssertion" id="43ee56c0-b624-468c-82ef-2fe49e42e446" name="Assert listingCounties"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertValidValuesInAllRecords("/urn:listingCounties/urn1:extension", [context.listingCounty1, context.listingCounty2])</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>RecordElementPath</con:name><con:value>//urn:listingCounties</con:value></con:property><con:property><con:name>xmlns:urn</con:name><con:value>urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2</con:value></con:property><con:property><con:name>xmlns:urn1</con:name><con:value>urn:riv:supportprocess:logistics:carelisting:2</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

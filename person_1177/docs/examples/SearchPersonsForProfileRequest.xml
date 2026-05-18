@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:SearchPersonsForProfileResponder:3">
+   <soapenv:Header>
+      <urn:LogicalAddress>?</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:SearchPersonsForProfile>
+         <urn1:query>?</urn1:query>
+         <urn1:queryLanguage>?</urn1:queryLanguage>
+         <urn1:profile>?</urn1:profile>
+         <!--You may enter ANY elements at this point-->
+      </urn1:SearchPersonsForProfile>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->		
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tns='urn:riv:supportprocess:logistics:carelisting:2' targetNamespace='urn:riv:supportprocess:logistics:carelisting:2' elementFormDefault='qualified' attributeFormDefault='unqualified' version='2.0'>
+    <xs:complexType name="IIType">
+        <xs:sequence>
+            <xs:element name="root" type="xs:string"/>
+            <xs:element name="extension" type="xs:string" minOccurs="0"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+	
+    <xs:complexType name="CVType">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="code" type="xs:string" />
+            <xs:element name="codeSystem" type="xs:string" />
+            <xs:element name="codeSystemName" type="xs:string" minOccurs="0"/>
+            <xs:element name="codeSystemVersion" type="xs:string" minOccurs="0"/>
+            <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+            <xs:element name="originalText" type="xs:string" minOccurs="0"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+	
+    <xs:simpleType name="HSAIdType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+  
+    <xs:complexType name="HealthcareFacilityType">
+        <xs:annotation>
+            <xs:documentation>
+            Vårdinrättning/vårdenhet som ansvarar för en person som listat sig hos dem.
+            Det är denna inrättning som får ekonomisk ersättning för personen.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="tns:HSAIdType" />
+            <xs:element name="name" type="xs:string" >
+            <xs:annotation>
+                <xs:documentation>Namn på vårdenheten.</xs:documentation>
+            </xs:annotation>
+            </xs:element>
+            <xs:element name="hasQueue" type="xs:boolean" />
+            <xs:element name="supportedListingTypes" type="tns:CVType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+                <xs:documentation>
+                Lista med listningstyper som vårdeneheten stödjer. Kan utelämnas om information
+                saknas eller om informationen inte behövs i kontexten där entiteten är tänkt att användas i.
+                </xs:documentation>
+            </xs:annotation>
+            </xs:element>
+            <xs:element name="supportsHealthcarePersonnel" type="xs:boolean" />
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ListingHealthcareFacilityType">
+        <xs:sequence>
+            <xs:element name="validFromDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="validToDate" type="xs:dateTime" minOccurs="0" />
+            <xs:element name="listingType" type="tns:CVType" />
+            <xs:element name="healthcareFacility" type="tns:HealthcareFacilityType" />
+            <xs:element name="healthcarePersonnel" type="tns:HealthcarePersonnelType" minOccurs="0" />
+            <xs:element name="isInQueue" type="xs:boolean" />
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HealthcarePersonnelType">
+        <xs:sequence>
+            <xs:element name="id" type="tns:HSAIdType" />
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="title" type="xs:string" minOccurs="0" />
+            <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name='ResultCodeEnum'>
+        <xs:restriction base='xs:string'>
+            <xs:enumeration value='OK' />
+            <xs:enumeration value='ERROR' />
+            <xs:enumeration value='INFO' />
+			<xs:enumeration value='ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED' />
+			<xs:enumeration value='ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT' />
+			<xs:enumeration value='ERROR_GUARDIAN_CONSENT_NEEDED' />
+			<xs:enumeration value='ERROR_AGE_LIMIT' />
+        </xs:restriction>
+    </xs:simpleType>
+
+	<xs:complexType name="ActorType">
+		<xs:sequence>
+			<xs:element name="actorId" type="tns:IIType"/>
+			<xs:element name="actorType" type="tns:ActorTypeEnum"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+    </xs:complexType>
+
+	<xs:simpleType name='ActorTypeEnum'>
+		<xs:restriction base='xs:string'>
+			<xs:enumeration value='CITIZEN' />
+			<xs:enumeration value='GUARDIAN' />
+			<xs:enumeration value='REGION' />
+			<xs:enumeration value='PRIVATE_CAREGIVER' />
+			<xs:enumeration value='SELF_OWNED_CAREGIVER' />
+			<xs:enumeration value='HEALTHCARE_ADVISER' />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

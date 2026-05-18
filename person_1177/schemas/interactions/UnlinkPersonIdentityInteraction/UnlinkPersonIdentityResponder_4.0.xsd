@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Inera AB licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->    
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='urn:riv:strategicresourcemanagement:persons:person:UnlinkPersonIdentityResponder:4'                
+    xmlns:strategicresourcemanagementpersonsperson='urn:riv:strategicresourcemanagement:persons:person:5'
+    targetNamespace='urn:riv:strategicresourcemanagement:persons:person:UnlinkPersonIdentityResponder:4'
+    elementFormDefault='qualified'
+    attributeFormDefault='unqualified'
+    version='4.0'>
+
+    <xs:import schemaLocation='../../core_components/strategicresourcemanagement_persons_person_5.0.xsd' namespace='urn:riv:strategicresourcemanagement:persons:person:5' />
+
+
+    <xs:element name='UnlinkPersonIdentity' type='tns:UnlinkPersonIdentityType'/>
+
+    <xs:complexType name='UnlinkPersonIdentityType'>
+        <xs:annotation>
+            <xs:documentation>
+                Tjänst för att koppla isär en tidigare koppling mellan 2 identiteter. T.ex  en koppling mellan en reservidentitet (LRID/NRID) och ett personnummer (PNR). Skälet till isärkopplingen är normalt en felaktig tidigare genomförd koppling.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="actor" type="strategicresourcemanagementpersonsperson:ActorType"/>
+            <xs:element name="unlinkFromIdentity" type="strategicresourcemanagementpersonsperson:IIType"/>
+            <xs:element name="unlinkIdentity" type="strategicresourcemanagementpersonsperson:IIType"/>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name='UnlinkPersonIdentityResponse' type='tns:UnlinkPersonIdentityResponseType'/>
+
+    <xs:complexType name='UnlinkPersonIdentityResponseType'>
+        <xs:annotation>
+            <xs:documentation>
+                Tjänst för att koppla isär en tidigare koppling mellan 2 identiteter. T.ex  en koppling mellan en reservidentitet (LRID/NRID) och ett personnummer (PNR). Skälet till isärkopplingen är normalt en felaktig tidigare genomförd koppling.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="result" type="strategicresourcemanagementpersonsperson:ResultType"/>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e7078d74-7373-4468-b944-186ed6abcc86" activeEnvironment="Default" name="GetAvailableHealthcarePersonnel" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7c4a6321-ae53-4648-8c37-16bf33acf491" wsaVersion="NONE" name="GetAvailableHealthcarePersonnelResponderBinding" type="wsdl" bindingName="{urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnel:2:rivtabp21}GetAvailableHealthcarePersonnelResponderBinding" soapVersion="1_1" anonymous="optional" definition="../../schemas/interactions/GetAvailableHealthcarePersonnelInteraction/GetAvailableHealthcarePersonnelInteraction_2.0_RIVTABP21.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/GIT/riv.supportprocess.logistics.carelisting/schemas/interactions/GetAvailableHealthcarePersonnelInteraction/GetAvailableHealthcarePersonnelInteraction_2.0_RIVTABP21.wsdl"><con:part><con:url>file:/C:/GIT/riv.supportprocess.logistics.carelisting/schemas/interactions/GetAvailableHealthcarePersonnelInteraction/GetAvailableHealthcarePersonnelInteraction_2.0_RIVTABP21.wsdl</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<wsdl:definitions name="GetAvailableHealthcarePersonnelInteraction" targetNamespace="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnel:2:rivtabp21" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tjsr="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:tjsi="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelInitiator:2" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnel:2:rivtabp21" xmlns:itr="urn:riv:itintegration:registry:1">
+  <wsdl:documentation>Tjänsteinteraktionens namn: GetAvailableHealthcarePersonnelInteraction
+		Beskrivning: 
+		  Lista med tillgänglig listningsbar vårdpersonal
+		Revisioner: 
+		Tjänstedomän: supportprocess:logistics:carelisting
+		Tjänsteinteraktionstyp: Fråga-Svar
+		WS-profil: RIVTABP21
+		Förvaltas av: Sveriges Kommuner och Landsting</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnel:2:rivtabp21">
+      <xs:import schemaLocation="GetAvailableHealthcarePersonnelResponder_2.0.xsd" namespace="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2"/>
+      <xs:import schemaLocation="../../core_components/itintegration_registry_1.0.xsd" namespace="urn:riv:itintegration:registry:1"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAvailableHealthcarePersonnelRequest">
+    <wsdl:part name="LogicalAddress" element="itr:LogicalAddress">
+      <wsdl:documentation>The county/region code</wsdl:documentation>
+    </wsdl:part>
+    <wsdl:part name="parameters" element="tjsr:GetAvailableHealthcarePersonnel"/>
+  </wsdl:message>
+  <wsdl:message name="GetAvailableHealthcarePersonnelResponse">
+    <wsdl:part name="parameters" element="tjsr:GetAvailableHealthcarePersonnelResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="GetAvailableHealthcarePersonnelResponderInterface">
+    <wsdl:operation name="GetAvailableHealthcarePersonnel">
+      <wsdl:input message="tns:GetAvailableHealthcarePersonnelRequest"/>
+      <wsdl:output message="tns:GetAvailableHealthcarePersonnelResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetAvailableHealthcarePersonnelResponderBinding" type="tns:GetAvailableHealthcarePersonnelResponderInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetAvailableHealthcarePersonnel">
+      <soap:operation soapAction="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2:GetAvailableHealthcarePersonnel" style="document"/>
+      <wsdl:input>
+        <soap:header use="literal" message="tns:GetAvailableHealthcarePersonnelRequest" part="LogicalAddress"/>
+        <soap:body use="literal" parts="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetAvailableHealthcarePersonnelResponderService">
+    <wsdl:port name="GetAvailableHealthcarePersonnelResponderPort" binding="tns:GetAvailableHealthcarePersonnelResponderBinding">
+      <soap:address location="http://tempuri.org"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\GIT\riv.supportprocess.logistics.carelisting\schemas\interactions\GetAvailableHealthcarePersonnelInteraction\GetAvailableHealthcarePersonnelResponder_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ 
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:core="urn:riv:supportprocess:logistics:carelisting:2">
+  <xs:import schemaLocation="../../core_components/supportprocess_logistics_carelisting_2.0.xsd" namespace="urn:riv:supportprocess:logistics:carelisting:2"/>
+  <xs:element name="GetAvailableHealthcarePersonnel" type="tns:GetAvailableHealthcarePersonnelType"/>
+  <xs:element name="GetAvailableHealthcarePersonnelResponse" type="tns:GetAvailableHealthcarePersonnelResponseType"/>
+  <xs:complexType name="GetAvailableHealthcarePersonnelType">
+    <xs:sequence>
+      <xs:element name="personId" type="core:IIType"/>
+      <xs:element name="healthcareFacilityHSAId" type="core:HSAIdType"/>
+      <xs:element name="listingTypes" type="core:CVType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetAvailableHealthcarePersonnelResponseType">
+    <xs:sequence>
+      <xs:element name="healthcarePersonnel" type="core:HealthcarePersonnelType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="resultCode" type="core:ResultCodeEnum" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="resultText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\GIT\riv.supportprocess.logistics.carelisting\schemas\core_components\supportprocess_logistics_carelisting_2.0.xsd</con:url><con:content><![CDATA[<!--Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.-->
+<xs:schema targetNamespace="urn:riv:supportprocess:logistics:carelisting:2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:riv:supportprocess:logistics:carelisting:2">
+  <xs:complexType name="IIType">
+    <xs:sequence>
+      <xs:element name="root" type="xs:string"/>
+      <xs:element name="extension" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CVType">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="codeSystem" type="xs:string"/>
+      <xs:element name="codeSystemName" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeSystemVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+      <xs:element name="originalText" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="HSAIdType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="HealthcareFacilityType">
+    <xs:annotation>
+      <xs:documentation>Vårdinrättning/vårdenhet som ansvarar för en person som listat sig hos dem.
+            Det är denna inrättning som får ekonomisk ersättning för personen.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="id" type="tns:HSAIdType"/>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Namn på vårdenheten.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasQueue" type="xs:boolean"/>
+      <xs:element name="supportedListingTypes" type="tns:CVType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Lista med listningstyper som vårdeneheten stödjer. Kan utelämnas om information
+                saknas eller om informationen inte behövs i kontexten där entiteten är tänkt att användas i.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supportsHealthcarePersonnel" type="xs:boolean"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListingHealthcareFacilityType">
+    <xs:sequence>
+      <xs:element name="validFromDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="validToDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="listingType" type="tns:CVType"/>
+      <xs:element name="healthcareFacility" type="tns:HealthcareFacilityType"/>
+      <xs:element name="healthcarePersonnel" type="tns:HealthcarePersonnelType" minOccurs="0"/>
+      <xs:element name="isInQueue" type="xs:boolean"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HealthcarePersonnelType">
+    <xs:sequence>
+      <xs:element name="id" type="tns:HSAIdType"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ResultCodeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="INFO"/>
+      <xs:enumeration value="ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED"/>
+      <xs:enumeration value="ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT"/>
+      <xs:enumeration value="ERROR_GUARDIAN_CONSENT_NEEDED"/>
+      <xs:enumeration value="ERROR_AGE_LIMIT"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ActorType">
+    <xs:sequence>
+      <xs:element name="actorId" type="tns:IIType"/>
+      <xs:element name="actorType" type="tns:ActorTypeEnum"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ActorTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CITIZEN"/>
+      <xs:enumeration value="GUARDIAN"/>
+      <xs:enumeration value="REGION"/>
+      <xs:enumeration value="PRIVATE_CAREGIVER"/>
+      <xs:enumeration value="SELF_OWNED_CAREGIVER"/>
+      <xs:enumeration value="HEALTHCARE_ADVISER"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\GIT\riv.supportprocess.logistics.carelisting\schemas\core_components\itintegration_registry_1.0.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:riv:itintegration:registry:1" elementFormDefault="qualified" version="1.0" xmlns="urn:riv:itintegration:registry:1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>Beskrivning: 	Grundläggande informationsobjekt för domänen itintegration:registry (adressering av tjänster)
+			
+			Revisionshistorik: 2011-06-27 Mats Ekhammar, Callista Enterprise AB
+				Added ServiceContractType
+			
+			Datum:			2011-05-04
+			Beskrivning:	Initial version
+			Författare:		marcus.krantz@callistaenterprise.se</xs:documentation>
+  </xs:annotation>
+  <xs:element name="LogicalAddress" type="LogicalAddressType"/>
+  <xs:element name="ServiceContract" type="ServiceContractType"/>
+  <xs:simpleType name="LogicalAddressType">
+    <xs:annotation>
+      <xs:documentation>Defines the type for logical address according to national reference architecture.
+				Superseeds wsa:To as type for logical address header in RIVTA 2.1.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="ServiceContractType">
+    <xs:annotation>
+      <xs:documentation>Type which describes a service contract. Used in interaction GetSupportedServiceContracts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ServiceContractNamespace" type="xs:anyURI"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://tempuri.org</con:endpoint></con:endpoints><con:operation id="b1ed546f-b161-4ebd-a876-44eb2c5a949c" isOneWay="false" action="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2:GetAvailableHealthcarePersonnel" name="GetAvailableHealthcarePersonnel" bindingOperationName="GetAvailableHealthcarePersonnel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24f29e5d-159c-4bf7-a7d5-28c2ff1ac816" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://tempuri.org</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>?</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>?</urn2:root>\r
+            <!--Optional:-->\r
+            <urn2:extension>?</urn2:extension>\r
+            <!--You may enter ANY elements at this point-->\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>?</urn1:healthcareFacilityHSAId>\r
+         <!--Zero or more repetitions:-->\r
+         <urn1:listingTypes>\r
+            <urn2:code>?</urn2:code>\r
+            <urn2:codeSystem>?</urn2:codeSystem>\r
+            <!--Optional:-->\r
+            <urn2:codeSystemName>?</urn2:codeSystemName>\r
+            <!--Optional:-->\r
+            <urn2:codeSystemVersion>?</urn2:codeSystemVersion>\r
+            <!--Optional:-->\r
+            <urn2:displayName>?</urn2:displayName>\r
+            <!--Optional:-->\r
+            <urn2:originalText>?</urn2:originalText>\r
+            <!--You may enter ANY elements at this point-->\r
+         </urn1:listingTypes>\r
+         <!--You may enter ANY elements at this point-->\r
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2:GetAvailableHealthcarePersonnel"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="78c3e97d-3c84-4678-ba4b-c156d86a0cb9" name="1 Basic functionality"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="c7046ae9-f567-4b18-b7eb-e38dcf18eb37" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="1.1 Personnummer" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="939eeb69-c421-44c5-8fe8-ef850dbd98e9"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="251dc667-5128-48b9-88dc-2dac2a20dbd6"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6089ab34-7a70-4909-83a6-4735ff1c364d"/><con:assertion type="GroovyScriptAssertion" id="3b4e8529-b7b7-4139-8a99-560bb04535a3" name="Assert personnel"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7684c55f-e7ec-4cac-8b6f-6de1acfff4ee" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="1.2 Samordningsnummer" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="2ff44d35-5013-4542-8fe2-1aa9681f536d"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="c330162c-17e0-49d0-8db0-d1015abd164e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>1.2.752.129.2.1.3.3</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6089ab34-7a70-4909-83a6-4735ff1c364d"/><con:assertion type="GroovyScriptAssertion" id="3b4e8529-b7b7-4139-8a99-560bb04535a3" name="Assert personnel"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="da0ab7b6-06e1-4fba-a7a0-e8b8094162ad" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="1.3 listingTypes national" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="0db3a628-42d1-4b02-b15b-23356075fbc1"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="60d60e72-a4d1-43e6-a7cc-c620d57c6c23"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+         <urn1:listingTypes>
+            <urn2:code>${listingTypeCode}</urn2:code>
+            <urn2:codeSystem>${listingTypeCodeSystem}</urn2:codeSystem>
+         </urn1:listingTypes>
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6089ab34-7a70-4909-83a6-4735ff1c364d"/><con:assertion type="GroovyScriptAssertion" id="3b4e8529-b7b7-4139-8a99-560bb04535a3" name="Assert personnel"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="4c1b79a9-57be-4a76-afea-7123db6108fa" name="2 Optional functionality"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="9282038e-2436-4933-a751-48f5dfa05c07" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.1 listingTypes local" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="ff4dd69f-ace9-4d3d-9790-e410df7785ef"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="c1b71c90-5f83-40c0-bad8-0717541a5004"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+         <urn1:listingTypes>
+            <urn2:code>${listingTypeCode}</urn2:code>
+            <urn2:codeSystem>${listingTypeCodeSystem}</urn2:codeSystem>
+         </urn1:listingTypes>
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6089ab34-7a70-4909-83a6-4735ff1c364d"/><con:assertion type="GroovyScriptAssertion" id="3b4e8529-b7b7-4139-8a99-560bb04535a3" name="Assert personnel"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ed293be5-81ff-45b8-9705-999f7b78e935" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="2.2 listingTypes multi" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="df392102-340b-4783-a361-ed6ee9840730"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="fe26ccd3-c7b8-46fe-8364-ddd192e72611"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+         <urn1:listingTypes>
+            <urn2:code>${listingTypeCode1}</urn2:code>
+            <urn2:codeSystem>${listingTypeCodeSystem1}</urn2:codeSystem>
+         </urn1:listingTypes>
+         <urn1:listingTypes>
+            <urn2:code>${listingTypeCode2}</urn2:code>
+            <urn2:codeSystem>${listingTypeCodeSystem2}</urn2:codeSystem>
+         </urn1:listingTypes>
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6089ab34-7a70-4909-83a6-4735ff1c364d"/><con:assertion type="GroovyScriptAssertion" id="3b4e8529-b7b7-4139-8a99-560bb04535a3" name="Assert personnel"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertNonEmptyResponse()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="a1d2d7f7-db74-4258-b243-00eea6bc41c5" name="3 Error handling"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="5b6ffe53-9d2a-4b6d-9be6-196467ec45ed" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="3.1 SoapFault" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="07324625-cca1-4c40-a450-409143a3d036"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="a6637505-f4ba-4aa9-b630-629eb6721aeb"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}"/>
+  &lt;con:entry key="x-mock-response" value="SoapFault"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="Not SOAP Fault Assertion" id="f5da22f2-cde1-49e0-9c16-22730e8f5faa" name="SOAP Fault"/><con:assertion type="GroovyScriptAssertion" id="ed75d29a-ba86-4541-97ee-d343728b0eaf" name="Loggning"><con:configuration><scriptText>//Behövs för att loggningen ska fungera
+import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="d34cf93f-67fa-4dc2-a11e-da854f84551c" name="4 Content - Common"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a64dee06-91df-4e11-b6df-358a8250cb48" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="4.1 Encoding_HeaderProlog" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="1b3c896f-8e1e-41f9-92fc-22f63f617819"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="afb490fe-57fb-499a-afdb-c75d055cd7bb"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6089ab34-7a70-4909-83a6-4735ff1c364d"/><con:assertion type="GroovyScriptAssertion" id="3b4e8529-b7b7-4139-8a99-560bb04535a3" name="Assert valid encoding"><con:configuration><scriptText>import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)
+
+ca.assertValidEncoding()</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4b6d6ef5-c989-4d1c-b1a9-26a6f8727c53" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="4.2 Encoding_SpecialCharacters" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Read data" id="f6eeafdb-38d3-4586-8a46-2656579a4b22"><con:settings/><con:config><script>import se.skl.rivta.testsupport.soapui.datasource.XmlDataReader
+import com.eviware.soapui.support.GroovyUtils
+
+def utils = new GroovyUtils(context)
+def dataFile = new File(utils.projectPath + "/data.xml")
+def source = new XmlDataReader(context, dataFile)
+
+source.load(testRunner.testCase.getName())</script></con:config></con:testStep><con:testStep type="request" name="Call GetAvailableHealthcarePersonnel" id="72b84796-ee4c-4d29-a43f-62215270d807"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GetAvailableHealthcarePersonnelResponderBinding</con:interface><con:operation>GetAvailableHealthcarePersonnel</con:operation><con:request name="Call GetAvailableHealthcarePersonnel" id="7981870e-cd10-40e9-a06f-82ad6ab324c0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="x-rivta-original-serviceconsumer-hsaid" value="${originalServiceconsumerHsaId}" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${webServiceUrl}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2" xmlns:urn2="urn:riv:supportprocess:logistics:carelisting:2">\r
+   <soapenv:Header>\r
+      <urn:LogicalAddress>${logicalAddress}</urn:LogicalAddress>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <urn1:GetAvailableHealthcarePersonnel>\r
+         <urn1:personId>\r
+            <urn2:root>${personIdRoot}</urn2:root>\r
+            <urn2:extension>${personIdExtension}</urn2:extension>\r
+         </urn1:personId>\r
+         <urn1:healthcareFacilityHSAId>${healthcareFacilityHSAId}</urn1:healthcareFacilityHSAId>\r
+      </urn1:GetAvailableHealthcarePersonnel>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="49bb9872-ab61-47cc-96b1-ad413a553178"/><con:assertion type="Schema Compliance" id="473f96a8-33d8-448b-b18a-4ebe26729e17"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="6089ab34-7a70-4909-83a6-4735ff1c364d"/><con:assertion type="Simple Contains" id="30406c79-dd6c-4c89-a9e0-aa1c288c4994" name="Contains"><con:configuration><token>${testString}</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" id="e3127a70-e28c-4865-956f-f3c5288b3da2" name="Loggning"><con:configuration><scriptText>//Behövs för att loggningen ska fungera
+import se.skl.rivta.tksupport.soapui.ContentAssertions
+def ca = new ContentAssertions(context, messageExchange, log)</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>RecordElementPath</con:name><con:value>//urn:healthcarePersonnel</con:value></con:property><con:property><con:name>xmlns:urn</con:name><con:value>urn:riv:supportprocess:logistics:carelisting:GetAvailableHealthcarePersonnelResponder:2</con:value></con:property><con:property><con:name>xmlns:urn1</con:name><con:value>urn:riv:supportprocess:logistics:carelisting:2</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

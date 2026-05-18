@@ -1,0 +1,106 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:UpdatePersonContactInformationResponder:3" xmlns:urn2="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header>
+      <urn:LogicalAddress>?</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:UpdatePersonContactInformation>
+         <urn1:actor>
+            <urn2:id>
+               <urn2:root>?</urn2:root>
+               <!--Optional:-->
+               <urn2:extension>?</urn2:extension>
+               <!--You may enter ANY elements at this point-->
+            </urn2:id>
+            <!--Optional:-->
+            <urn2:professional>
+               <urn2:organizationId>
+                  <urn2:root>?</urn2:root>
+                  <!--Optional:-->
+                  <urn2:extension>?</urn2:extension>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:organizationId>
+               <!--You may enter ANY elements at this point-->
+            </urn2:professional>
+            <!--You may enter ANY elements at this point-->
+         </urn1:actor>
+         <urn1:personId>
+            <urn2:root>?</urn2:root>
+            <!--Optional:-->
+            <urn2:extension>?</urn2:extension>
+            <!--You may enter ANY elements at this point-->
+         </urn1:personId>
+         <!--Optional:-->
+         <urn1:versionToUpdate>?</urn1:versionToUpdate>
+         <!--Zero or more repetitions:-->
+         <urn1:contactInformation>
+            <urn2:contactType>?</urn2:contactType>
+            <!--Optional:-->
+            <urn2:use>?</urn2:use>
+            <!--Optional:-->
+            <urn2:value>?</urn2:value>
+            <!--Optional:-->
+            <urn2:rank>?</urn2:rank>
+            <!--Optional:-->
+            <urn2:comment>?</urn2:comment>
+            <!--Optional:-->
+            <urn2:period>
+               <!--Optional:-->
+               <urn2:start>?</urn2:start>
+               <!--Optional:-->
+               <urn2:end>?</urn2:end>
+               <!--You may enter ANY elements at this point-->
+            </urn2:period>
+            <!--You may enter ANY elements at this point-->
+         </urn1:contactInformation>
+         <!--Zero or more repetitions:-->
+         <urn1:contactPerson>
+            <urn2:contactRelationshipType>?</urn2:contactRelationshipType>
+            <!--Optional:-->
+            <urn2:priorityOrder>?</urn2:priorityOrder>
+            <!--Optional:-->
+            <urn2:givenName>?</urn2:givenName>
+            <!--Optional:-->
+            <urn2:surName>?</urn2:surName>
+            <!--Optional:-->
+            <urn2:middleName>?</urn2:middleName>
+            <!--Optional:-->
+            <urn2:contactPersonAddress>
+               <!--Optional:-->
+               <urn2:careOf>?</urn2:careOf>
+               <!--Optional:-->
+               <urn2:postalAddress1>?</urn2:postalAddress1>
+               <!--Optional:-->
+               <urn2:postalAddress2>?</urn2:postalAddress2>
+               <!--Optional:-->
+               <urn2:postalCode>?</urn2:postalCode>
+               <!--Optional:-->
+               <urn2:city>?</urn2:city>
+               <!--You may enter ANY elements at this point-->
+            </urn2:contactPersonAddress>
+            <!--Zero or more repetitions:-->
+            <urn2:contactPersonContactInformation>
+               <urn2:contactType>?</urn2:contactType>
+               <!--Optional:-->
+               <urn2:use>?</urn2:use>
+               <!--Optional:-->
+               <urn2:value>?</urn2:value>
+               <!--Optional:-->
+               <urn2:rank>?</urn2:rank>
+               <!--Optional:-->
+               <urn2:comment>?</urn2:comment>
+               <!--Optional:-->
+               <urn2:period>
+                  <!--Optional:-->
+                  <urn2:start>?</urn2:start>
+                  <!--Optional:-->
+                  <urn2:end>?</urn2:end>
+                  <!--You may enter ANY elements at this point-->
+               </urn2:period>
+               <!--You may enter ANY elements at this point-->
+            </urn2:contactPersonContactInformation>
+            <!--You may enter ANY elements at this point-->
+         </urn1:contactPerson>
+         <!--You may enter ANY elements at this point-->
+      </urn1:UpdatePersonContactInformation>
+   </soapenv:Body>
+</soapenv:Envelope>

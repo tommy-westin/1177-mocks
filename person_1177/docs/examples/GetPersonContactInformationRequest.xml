@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:GetPersonContactInformationResponder:3" xmlns:urn2="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header>
+      <urn:LogicalAddress>?</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:GetPersonContactInformation>
+         <urn1:personId>
+            <urn2:root>?</urn2:root>
+            <!--Optional:-->
+            <urn2:extension>?</urn2:extension>
+            <!--You may enter ANY elements at this point-->
+         </urn1:personId>
+         <!--You may enter ANY elements at this point-->
+      </urn1:GetPersonContactInformation>
+   </soapenv:Body>
+</soapenv:Envelope>

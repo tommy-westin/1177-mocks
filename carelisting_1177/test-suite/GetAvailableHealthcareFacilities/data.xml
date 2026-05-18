@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="./../TK-doc-sv.xsl"?>
+<testsuite>
+    <id>GetAvailableHealthcareFacilities</id>
+    <description>Testsvit för att verifiera tjänsteproducenter för GetAvailableHealthcareFacilities.</description>
+    <globaldata>
+        <webServiceUrl>http://localhost:8088/mockGetAvailableHealthcareFacilitiesResponderBinding</webServiceUrl>
+		<!-- Tjänstekonsument, skickas i http-header "x-rivta-original-serviceconsumer-hsaid" -->
+		<originalServiceconsumerHsaId>SE-CONSUMER-001</originalServiceconsumerHsaId>
+		<!-- Logisk adressat (länskod) -->
+		<logicalAddress>01</logicalAddress>
+
+		<!-- Standardvärden för parametrar, kan ändras per testfall -->
+		<listingTypeCode>PV</listingTypeCode>
+		<listingTypeCodeSystem>1.2.752.129.5.1.27</listingTypeCodeSystem>
+		
+		<!-- Parametrar för loggning -->
+		<logTestData>false</logTestData>
+		<logTestDataPath>C:/temp/SOAP-UI/</logTestDataPath>
+		<logTestDataFilesAllowed>500</logTestDataFilesAllowed>
+
+    </globaldata>
+    <testcase id="1.1 All facilities">
+        <description>Verifierar att förväntat antal mottagningar returneras vid anrop utan filtrering.
+		</description>
+        <data>
+			<numberOfAvailableFacilities>2</numberOfAvailableFacilities>
+        </data>
+    </testcase>
+    <testcase id="1.2.1 healthcareFacilities single">
+        <description>Verifierar att filtrering kan ske på en mottagnings HSAID.
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X011</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+    <testcase id="1.2.2 healthcareFacilities multi">
+        <description>Verifierar att filtrering kan ske på flera mottagningar.
+		</description>
+        <data>
+			<healthcareFacilityHSAId1>SE12343543-X011</healthcareFacilityHSAId1>
+			<healthcareFacilityHSAId2>SE12343543-X022</healthcareFacilityHSAId2>
+        </data>
+    </testcase>
+    <testcase id="1.3.1 listingTypes national">
+        <description>Verifierar att filtrering kan ske på den nationella listningstypen för primärvård.
+		</description>
+        <data>
+        </data>
+    </testcase>
+    <testcase id="1.3.2 listingTypes unknown">
+        <description>Verifierar att flera och okända listningstyper kan hanteras i anrop utan fel.
+		</description>
+        <data>
+        </data>
+    </testcase>
+
+    <testcase id="2.1 listingTypes local">
+        <description>Verifierar att filtrering kan ske på en lokalt överenskommen listningskod.
+		</description>
+        <data>
+			<listingTypeCode>LOKALTYP</listingTypeCode>
+			<listingTypeCodeSystem>TBD_LOKAL_LISTNINGSTYP</listingTypeCodeSystem>
+        </data>
+    </testcase>
+
+    <testcase id="3.1 SoapFault">
+		<description>Verifierar att ett Soap Fault-meddelande returneras vid tekniskt fel.
+			<br/>Testet förutsätter att miljön kan modifieras så att ett tekniskt fel uppstår.
+		</description>
+        <data>
+        </data>
+    </testcase>
+
+	<testcase id="4.1 Encoding_HeaderProlog">
+        <description>Verifierar att 
+          <br/>1. Content-Type header attributet charset har värdet UTF-8 eller UTF-16.
+          <br/>2. XML Prolog attributet encoding har värdet UTF-8 or UTF-16.
+          <br/>3. Om båda är satta ska de ha samma värde.
+        </description>
+        <data>
+        </data>
+    </testcase>
+	<testcase id="4.2 Encoding_SpecialCharacters">
+        <description>Testet verifierar att specialtecken så som åäö kan hanteras.
+            <br/>Använd en sträng med de specialtecken som systemet ska kunna hantera.
+        </description>
+        <data>
+			<testString>Huvud- axlar- knä- och tåspecialisten</testString>
+        </data>
+    </testcase>
+
+    <testcase id="5.1.1 hasQueue_true">
+        <description>Verifierar att kö kan indikeras korrekt för en mottagning. 
+		Ange en mottagning där mottagningens maximala kvot av listade invånare har nåtts och kö erbjuds (frivillig funktionalitet).
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X022</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+    <testcase id="5.1.2 hasQueue_false">
+        <description>Verifierar att kö kan indikeras korrekt för en mottagning. 
+		Ange en mottagning där mottagningens maximala kvot av listade invånare har INTE har nåtts.
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X011</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+    <testcase id="5.2.1 supportsHealthcarePersonnel_true">
+        <description>Verifierar att val av vårdpersonal kan indikeras korrekt för en mottagning. 
+		Ange en mottagning där val av vårdpersonal erbjuds (frivillig funktionalitet).
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X022</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+    <testcase id="5.2.2 supportsHealthcarePersonnel_false">
+        <description>Verifierar att val av vårdpersonal kan indikeras korrekt för en mottagning. 
+		Ange en mottagning där val av vårdpersonal inte erbjuds.
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X011</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+    <testcase id="5.3 listingTypes multiple">
+        <description>Verifierar att flera listningstyper kan returneras för en mottagning.
+		Endast aktuellt om lokala listningstyper förekommer. Ange en mottagning som stödjer minst två listningstyper.
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X011</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+    <testcase id="5.4 facility_queueLength">
+        <description>Verifierar att kölängd kan returneras för en mottagning.
+		Endast aktuellt om kö förekommer.
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X011</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+    <testcase id="5.5 facility_estimatedWaitInQueue">
+        <description>Verifierar att förväntad kötid kan returneras för en mottagning.
+		Endast aktuellt om kö förekommer.
+		</description>
+        <data>
+			<healthcareFacilityHSAId>SE12343543-X011</healthcareFacilityHSAId>
+        </data>
+    </testcase>
+	
+</testsuite>

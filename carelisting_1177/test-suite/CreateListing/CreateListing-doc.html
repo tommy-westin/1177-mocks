@@ -1,0 +1,199 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+					ul {
+						margin-top: 10px;
+						margin-bottom: 10px;
+					}
+					h2, h3 {
+						color: #196619;
+					}
+				</style>
+</head>
+<body>
+<h1>TK-testsvit för CreateListing</h1>
+<h2>Om testsviten</h2>
+<p>Detta dokument beskriver testsviten för CreateListing. Testsviten innehåller ett antal testfall som kan användas för att verifiera implementationen innan integrationen med den nationella tjänsteplattformen.<br>
+				Testsviten använder SoapUI för att verifiera implementationen. Dokumentation om SoapUI hittas här: <a target="blank" href="https://www.soapui.org/getting-started/introduction.html">www.soapui.org</a>.<br>
+				Klicka på <a target="blank" href="https://www.soapui.org/downloads/soapui.html">den här länken</a> för att ladda hem en gratisversion av SoapUI. Installera enligt anvisning.</p>
+<h2>Förberedelser</h2>
+<p><ul>
+<li>Gå till mappen <b>test-suite</b> i release-paketet</li>
+<li>Kopiera filen <b>‘soapui-support-N.N.NN.jar’</b> ('N.N.NN' är versionsnummer) till mappen <b>/bin/ext</b> där Soap-UI är installerat (leta efter mappen <b>/Program Files/Smartbear</b> på PC eller <b>/contents/java/app</b> på MAC OS)</li>
+<li>Öppna SoapUI och importera SoapUI-projektet (<b>test-suite//-soapui-project.xml</b>) (välj ‘Import Project’ från menyn 'File')</li>
+<li>Om din webservice kräver ett SSL-certifikat, kan detta konfigureras via 'Preferences' (via menyn 'File').  
+						I fönstret för inställningar, gå till fliken 'SSL Settings' och importera ditt certifikat under 'Keystore'</li>
+<li>Uppdatera <i>data.xml</i> så att den matchar den testdata du har i ditt system. Om du inte har testdata som passar så behöver detta läggas in i källsystemet (se nedan för instruktioner)</li>
+<li>Du borde nu kunna köra testfallen i SoapUI</li>
+</ul></p>
+<h2>Testdata i <i>data.xml</i>
+</h2>
+<p>
+					Innan man kör testfallen i SoapUI så måste den data som skickas med i anropen anpassas utifrån det system som man vill testa. Detta görs genom att ändra i filen <i>data.xml</i> enligt nedan.<br><br>
+					Filen är i XML-format och i början finns en sektion som heter "globaldata". Här anger man den konfiguration som kommer att användas av alla testfall.<br>
+					Varje element i "globaldata" kan omdefinieras för ett specifikt testfall vid behov. Följande element är globala:
+					<ul>
+<li>webServiceUrl</li>
+<li>originalServiceconsumerHsaId</li>
+<li>logicalAddress</li>
+<li>newListingCounty</li>
+<li>personIdRoot</li>
+<li>personIdExtension</li>
+<li>organizationIdRoot</li>
+<li>organizationIdExtension</li>
+<li>healthcareFacilityHSAId</li>
+<li>listingTypeCode</li>
+<li>listingTypeCodeSystem</li>
+<li>logTestData</li>
+<li>logTestDataPath</li>
+<li>logTestDataFilesAllowed</li>
+</ul>
+					Globaldata innehåller ett antal konfigurationsparametrar för loggning: <br><b>logTestData:</b> Sätts till true/false beroende på om loggning ska utföras eller ej. <b> Observera att patientdata kan lagras vid påslagen loggning.</b><br><b>logTestDataPath:</b> Sökvägen till den katalog där loggfilerna sparas, måste vara en katalog som användaren har rättighet att skriva i. <br><b>logTestDataFilesAllowed:</b> Max antal filer som sparas. Det blir en fil för varje testfall som körs. När max antal filer har uppnåtts tas de äldsta bort så nya kan sparas.<br></p>
+<h2>Allmänna tips</h2>
+<p><ul>
+<li>Kör ett testfall i taget och verifiera resultatet. Man kan också köra en hel testsvit (t.ex. "1 Basic tests") för att köra igenom alla testfall i just den sviten.<br>
+						Om du gör någon ändring som ska påverka ett specifikt testfall, kan man efter att ha verifierat just det testfallet köra genom hela sviten för att snabbt se att det "hänger ihop".</li>
+<li>Eventuella felmeddelanden skrivs ut dels till fönstret för testfallet och dels i sektionen "assertions" i anrops-fönstret.</li>
+</ul></p>
+<h2>Beskrivning av testfallen</h2>
+<p>De parametrar man anger för ett specifikt testfall kompletterar och/eller omdefinierar de parametrar som anges i "globaldata".<br>
+				Det betyder att både parametrar från "globaldata" och det specifika testfallets sektion i filen används för det aktuella testfallet.<br>
+				OBS! Om en parameter med samma namn definieras både i "globaldata" och specifikt för testfallet, så kommer värdet från testfalls-sektionen att användas.<br>
+				Ett exempel kan vara "patientId". Denna definieras i "globaldata", eftersom det är troligt att det mesta av testdatan kommer att röra samma patient.<br>
+				Men för vissa testfall vill man kunna använda en annan patient och för dessa testfall definierar man detta genom att ta bort kommentars-markeringen runt parametern "patientId" i testfallets sektion.<br>
+				Glöm inte att spara <i>data.xml</i> efter att du har ändrat i den.</p>
+<ul style="list-style-type:none">
+<h3><li>1.1 Personnummer</li></h3>
+<p><description>Verifierar att invånare med personnummer kan genomföra en listning med endast obligatoriska inparametrar.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<ul></ul>
+<h3><li>1.2 Samordningsnummer</li></h3>
+<p><description>Verifierar att invånare med samordningsnummer kan genomföra en listning med endast obligatoriska inparametrar.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<b>Testfalls-specifika parametrar</b><ul><li>personIdExtension</li></ul>
+<h3><li>1.3.1 listingType national</li></h3>
+<p><description>Verifierar att listning med nationell listningstyp stöds.
+		</description></p>
+<ul></ul>
+<h3><li>1.3.2 listingType local</li></h3>
+<p><description>Verifierar att listning med lokal listningstyp kan genomföras (om regionen erbjuder stöd för sådan).
+			Upprepa testet med de olika koder som producenten skall stödja.
+		</description></p>
+<b>Testfalls-specifika parametrar</b><ul>
+<li>listingTypeCode</li>
+<li>listingTypeCodeSystem</li>
+</ul>
+<h3><li>1.4.1 homeCounty_recipient</li></h3>
+<p><description>Verifierar att listning kan göras där hemregion är samma som mottagare (LogicalAddress). Ska ge samma resultat som att utelämna elementet.
+		</description></p>
+<ul></ul>
+<h3><li>1.4.2 homeCounty_other</li></h3>
+<p><description>Verifierar att listning kan göras där hemregion är annan än mottagande region (dvs utomlänslistning). 
+			Ange ett länsnummer som ej är samma som mottagande region.
+		</description></p>
+<b>Testfalls-specifika parametrar</b><ul><li>homeCounty</li></ul>
+<h3><li>2.1 healthcarePersonnel</li></h3>
+<p><description>Verifierar att listning kan göras med val av vårdpersonal (husläkare). Ange ett personligt HSAID som är tillgängligt för listning.
+		</description></p>
+<b>Testfalls-specifika parametrar</b><ul><li>healthcarePersonnel</li></ul>
+<h3><li>2.2.1 addToQueue_true</li></h3>
+<p><description>Verifierar att invånare kan välja att ställa sig i kö, för enheter som erbjuder detta.
+		</description></p>
+<ul></ul>
+<h3><li>2.2.2 addToQueue_false</li></h3>
+<p><description>Verifierar att listning kan göras med valet att inte ställa sig i kö. Skall ge samma resultat som att utelämna elementet.
+		</description></p>
+<ul></ul>
+<h3><li>2.3.1 actor_citizen</li></h3>
+<p><description>Verifierar att listningssystemet kan ta emot anrop som initierats av invånare.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<ul></ul>
+<h3><li>2.3.2 actor_guardian</li></h3>
+<p><description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdnadshavare i ombudsläge.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<b>Testfalls-specifika parametrar</b><ul>
+<li>guardianIdExtension</li>
+<li>personIdExtension</li>
+</ul>
+<h3><li>2.3.3 actor_region</li></h3>
+<p><description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdpersonal på region.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<ul></ul>
+<h3><li>2.3.4 actor_private_caregiver</li></h3>
+<p><description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdpersonal hos privat vårdgivare med vårdavtal.
+			Listningssystemet ansvarar för att avgöra om man tillåter detta.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<ul></ul>
+<h3><li>2.3.5 actor_self_owned_caregiver</li></h3>
+<p><description>Verifierar att listningssystemet kan ta emot anrop som initierats av vårdgivare driven i egen regi.
+			Listningssystemet ansvarar för att avgöra om man tillåter detta.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<ul></ul>
+<h3><li>2.3.6 actor_healthcare_adviser</li></h3>
+<p><description>Verifierar att listningssystemet kan ta emot anrop som initierats av sjukvårdsrådgivning.
+			Listningssystemet ansvarar för att avgöra om man tillåter detta.
+			Motsvarar listning på en mottagning med tillgängliga platser i hemregion, utan extra val.
+		</description></p>
+<ul></ul>
+<h3><li>3.1 SoapFault</li></h3>
+<p>Verifierar att ett Soap Fault-meddelande returneras vid tekniskt fel.
+			<br>Testet förutsätter att miljön kan modifieras så att ett tekniskt fel uppstår.</p>
+<ul></ul>
+<h3><li>3.2.1 Error healthcareFacilityHSAId</li></h3>
+<p><description>Verifierar att ett korrekt ERROR-svar returneras om mottagningen inte är tillgänglig för listning.
+		</description></p>
+<b>Testfalls-specifika parametrar</b><ul><li>healthcareFacilityHSAId</li></ul>
+<h3><li>3.2.2 Error newListingCounty</li></h3>
+<p><description>Verifierar att ett korrekt ERROR-svar returneras om meddelandet skickas till fel mottagare (pålistningsregion ej är samma som mottagare).
+		</description></p>
+<b>Testfalls-specifika parametrar</b><ul>
+<li>logicalAddress</li>
+<li>newListingCounty</li>
+</ul>
+<h3><li>3.2.3 Error maximumAnnualUpdatesExceeded</li></h3>
+<p><description>Verifierar att ett korrekt ERROR_MAXIMUM_ANNUAL_UPDATES_EXCEEDED returneras om invånaren redan listat om sig max antal gånger under året.
+			<br>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description></p>
+<ul></ul>
+<h3><li>3.2.4 Error maximumCitizenReachedOnCareUnit</li></h3>
+<p><description>Verifierar att ett korrekt ERROR_MAXIMUM_CITIZEN_REACHED_ON_CAREUNIT returneras om vårdenheten inte kan ta emot fler listnigar.
+			<br>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description></p>
+<ul></ul>
+<h3><li>3.2.5 Error guardianConsentNeeded</li></h3>
+<p><description>Verifierar att ett korrekt ERROR_GUARDIAN_CONSENT_NEEDED returneras om vårdnadshavares samtycke krävs.
+			<br>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description></p>
+<ul></ul>
+<h3><li>3.2.6 Error ageLimit</li></h3>
+<p><description>Verifierar att ett korrekt ERROR_AGE_LIMIT returneras om invånaren inte ligger inom tillåten åldersgräns.
+			<br>Testet förutsätter att mottagande system stödjer detta, och att man konfigurerat testdata för detta.
+		</description></p>
+<ul></ul>
+<h3><li>4.1 Encoding_HeaderProlog</li></h3>
+<p>Verifierar att 
+          <br>1. Content-Type header attributet charset har värdet UTF-8 eller UTF-16.
+          <br>2. XML Prolog attributet encoding har värdet UTF-8 or UTF-16.
+          <br>3. Om båda är satta ska de ha samma värde.</p>
+<ul></ul>
+<h3><li>4.2 Encoding_SpecialCharacters</li></h3>
+<p>Testet verifierar att specialtecken så som åäö kan hanteras.
+            <br>Använd en sträng med de specialtecken som systemet ska kunna hantera.</p>
+<b>Testfalls-specifika parametrar</b><ul><li>testString</li></ul>
+<h3><li>4.3 Info</li></h3>
+<p><description>Verifierar att ett korrekt INFO meddelande returneras när en bokning genomförs men ett meddelande behöver lämnas till användaren.
+			<br>Testet kräver att testaren kan skapa de verksamhetsspecifika förutsättningar som krävs för att INFO meddelandet ska skickas.
+		</description></p>
+<ul></ul>
+</ul>
+<br><br>
+</body>
+</html>

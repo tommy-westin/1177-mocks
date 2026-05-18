@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:3" xmlns:urn2="urn:riv:strategicresourcemanagement:persons:person:3">
+   <soapenv:Header>
+      <urn:LogicalAddress>?</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:GetPersonsForProfile>
+         <!--1 or more repetitions:-->
+         <urn1:personId>
+            <urn2:root>?</urn2:root>
+            <!--Optional:-->
+            <urn2:extension>?</urn2:extension>
+            <!--You may enter ANY elements at this point-->
+         </urn1:personId>
+         <urn1:profile>?</urn1:profile>
+         <urn1:ignoreReferredIdentity>?</urn1:ignoreReferredIdentity>
+         <!--You may enter ANY elements at this point-->
+      </urn1:GetPersonsForProfile>
+   </soapenv:Body>
+</soapenv:Envelope>

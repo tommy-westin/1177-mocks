@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:itintegration:registry:1" xmlns:urn1="urn:riv:strategicresourcemanagement:persons:person:GetFilesForOrderIdResponder:3">
+   <soapenv:Header>
+      <urn:LogicalAddress>?</urn:LogicalAddress>
+   </soapenv:Header>
+   <soapenv:Body>
+      <urn1:GetFilesForOrderId>
+         <urn1:orderId>?</urn1:orderId>
+         <!--You may enter ANY elements at this point-->
+      </urn1:GetFilesForOrderId>
+   </soapenv:Body>
+</soapenv:Envelope>
