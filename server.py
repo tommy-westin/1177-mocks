@@ -47,15 +47,17 @@ from services.person import (
 app = Flask(__name__)
 
 PORT = int(os.environ.get("MOCK_PORT", "8088"))
+MOCK_HOST = os.environ.get("MOCK_HOST", f"http://localhost:{PORT}")
 SOAP_CONTENT_TYPE = "text/xml; charset=utf-8"
 
 # ---------------------------------------------------------------------------
-# Schema bases – one per domain, pointing at the original project schemas
+# Schema bases – prefer schemas bundled in repo, fall back to sibling project
 # ---------------------------------------------------------------------------
 
-# Auto-detect project root whether vvh-mocks sits beside or inside vardvalshanteraren/.
 _parent = os.path.normpath(os.path.join(ROOT, ".."))
-if os.path.isdir(os.path.join(_parent, "carelisting_1177")):
+if os.path.isdir(os.path.join(ROOT, "carelisting_1177")):
+    _PROJECT_ROOT = ROOT                                           # schemas bundled in repo
+elif os.path.isdir(os.path.join(_parent, "carelisting_1177")):
     _PROJECT_ROOT = _parent                                        # inside vardvalshanteraren/
 else:
     _PROJECT_ROOT = os.path.join(_parent, "vardvalshanteraren")   # beside vardvalshanteraren/
@@ -71,24 +73,24 @@ SCHEMA_BASES: dict[str, str] = {
 
 _CARELISTING_WSDL = {
     "GetListingTypesInteraction_2.0_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/carelisting/GetListingTypes",
+        f"{MOCK_HOST}/carelisting/GetListingTypes",
     "GetAvailableHealthcareFacilitiesInteraction_2.1_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/carelisting/GetAvailableHealthcareFacilities",
+        f"{MOCK_HOST}/carelisting/GetAvailableHealthcareFacilities",
     "GetAvailableHealthcarePersonnelInteraction_2.0_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/carelisting/GetAvailableHealthcarePersonnel",
+        f"{MOCK_HOST}/carelisting/GetAvailableHealthcarePersonnel",
     "GetListingInteraction_2.1_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/carelisting/GetListing",
+        f"{MOCK_HOST}/carelisting/GetListing",
     "CreateListingInteraction_2.0_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/carelisting/CreateListing",
+        f"{MOCK_HOST}/carelisting/CreateListing",
     "UpdateListingInteraction_2.0_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/carelisting/UpdateListing",
+        f"{MOCK_HOST}/carelisting/UpdateListing",
 }
 
 _PERSON_WSDL = {
     "GetPersonsForProfileInteraction_5.0_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/person/GetPersonsForProfile",
+        f"{MOCK_HOST}/person/GetPersonsForProfile",
     "GetPersonsForProfileUnrestrictedInteraction_5.0_RIVTABP21.wsdl":
-        f"http://localhost:{PORT}/person/GetPersonsForProfileUnrestricted",
+        f"{MOCK_HOST}/person/GetPersonsForProfileUnrestricted",
 }
 
 _WSDL_ADDRESS: dict[str, str] = {**_CARELISTING_WSDL, **_PERSON_WSDL}
@@ -213,7 +215,7 @@ def _wsdl_redirect(domain: str, operation: str) -> Response:
     path = _maps.get(domain, {}).get(operation)
     if path is None:
         abort(404)
-    url = f"http://localhost:{PORT}/schemas/{domain}/{path}"
+    url = f"{MOCK_HOST}/schemas/{domain}/{path}"
     return Response(status=302, headers={"Location": url})
 
 
@@ -238,8 +240,8 @@ def index():
                               ("person", PERSON_HANDLERS)]:
         lines.append(f"<h2>{domain}</h2><ul>")
         for op in handlers:
-            wsdl = f"http://localhost:{PORT}/{domain}/{op}?wsdl"
-            soap = f"http://localhost:{PORT}/{domain}/{op}"
+            wsdl = f"{MOCK_HOST}/{domain}/{op}?wsdl"
+            soap = f"{MOCK_HOST}/{domain}/{op}"
             lines.append(
                 f"<li><b>{op}</b> &nbsp; "
                 f"WSDL: <a href='{wsdl}'>{wsdl}</a> &nbsp; SOAP: {soap}</li>"

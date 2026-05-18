@@ -5,9 +5,16 @@ services:
     build: .
     ports:
       - "8088:8088"
-    volumes:
-      # Mount the project schemas so the mock can read WSDLs and XSDs
-      - ../vardvalshanteraren/carelisting_1177/schemas:/project/vardvalshanteraren/carelisting_1177/schemas:ro
     environment:
       MOCK_PORT: "8088"
+      MOCK_HOST: "${MOCK_HOST:-http://localhost:8088}"
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: "${CF_TUNNEL_TOKEN}"
+    depends_on:
+      - vvh-mocks
     restart: unless-stopped
