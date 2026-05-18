@@ -1,0 +1,37 @@
+[
+  {
+    "hsaId": "SE2321000156-A001",
+    "name": "Östersunds hälsocentral",
+    "hasQueue": true,
+    "supportsHealthcarePersonnel": true,
+    "supportedListingTypes": ["PRIMARY_CARE", "FAST_DOCTOR_CONTACT", "FAST_CARE_CONTACT"]
+  },
+  {
+    "hsaId": "SE2321000156-A002",
+    "name": "Brunflo hälsocentral",
+    "hasQueue": true,
+    "supportsHealthcarePersonnel": true,
+    "supportedListingTypes": ["PRIMARY_CARE", "FAST_DOCTOR_CONTACT", "FAST_CARE_CONTACT"]
+  },
+  {
+    "hsaId": "SE2321000156-A003",
+    "name": "Torvalla hälsocentral",
+    "hasQueue": false,
+    "supportsHealthcarePersonnel": true,
+    "supportedListingTypes": ["PRIMARY_CARE", "FAST_DOCTOR_CONTACT", "FAST_CARE_CONTACT"]
+  },
+  {
+    "hsaId": "SE2321000156-A004",
+    "name": "Strömsunds hälsocentral",
+    "hasQueue": false,
+    "supportsHealthcarePersonnel": false,
+    "supportedListingTypes": ["PRIMARY_CARE"]
+  },
+  {
+    "hsaId": "SE2321000156-A005",
+    "name": "Åre hälsocentral",
+    "hasQueue": true,
+    "supportsHealthcarePersonnel": false,
+    "supportedListingTypes": ["PRIMARY_CARE", "FAST_DOCTOR_CONTACT"]
+  }
+]

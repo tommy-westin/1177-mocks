@@ -1,0 +1,46 @@
+[
+  {
+    "personId": "194001019999",
+    "scenario": "listed_with_contacts",
+    "facilityHsaId": "SE2321000156-A001",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"},
+      {"code": "FAST_DOCTOR_CONTACT", "doctorHsaId": "SE2321000156-P001"},
+      {"code": "FAST_CARE_CONTACT", "careContactHsaId": "SE2321000156-P002"}
+    ],
+    "isInQueue": false
+  },
+  {
+    "personId": "197505059999",
+    "scenario": "listed_no_contacts",
+    "facilityHsaId": "SE2321000156-A002",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"}
+    ],
+    "isInQueue": false
+  },
+  {
+    "personId": "199505059999",
+    "scenario": "in_queue",
+    "facilityHsaId": "SE2321000156-A001",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"}
+    ],
+    "isInQueue": true
+  },
+  {
+    "personId": "200101019999",
+    "scenario": "not_listed"
+  },
+  {
+    "personId": "196012129999",
+    "scenario": "out_of_county",
+    "facilityHsaId": "SE2321000156-A003",
+    "listingTypes": [
+      {"code": "PRIMARY_CARE"}
+    ],
+    "isInQueue": false,
+    "isOutOfCounty": true,
+    "homeCountyCode": "04"
+  }
+]

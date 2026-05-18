@@ -1,0 +1,65 @@
+[
+  {
+    "hsaId": "SE2321000156-P001",
+    "name": "Anna Lindström",
+    "title": "Specialistläkare",
+    "professionCode": "DOCTOR",
+    "facilityHsaId": "SE2321000156-A001"
+  },
+  {
+    "hsaId": "SE2321000156-P002",
+    "name": "Erik Bergman",
+    "title": "Distriktssköterska",
+    "professionCode": "NURSE",
+    "facilityHsaId": "SE2321000156-A001"
+  },
+  {
+    "hsaId": "SE2321000156-P003",
+    "name": "Maria Sundström",
+    "title": "Fysioterapeut",
+    "professionCode": "OTHER",
+    "facilityHsaId": "SE2321000156-A001"
+  },
+  {
+    "hsaId": "SE2321000156-P004",
+    "name": "Lars Pettersson",
+    "title": "Specialistläkare",
+    "professionCode": "DOCTOR",
+    "facilityHsaId": "SE2321000156-A002"
+  },
+  {
+    "hsaId": "SE2321000156-P005",
+    "name": "Ingrid Norén",
+    "title": "Distriktssköterska",
+    "professionCode": "NURSE",
+    "facilityHsaId": "SE2321000156-A002"
+  },
+  {
+    "hsaId": "SE2321000156-P006",
+    "name": "Johan Svensson",
+    "title": "Allmänläkare",
+    "professionCode": "DOCTOR",
+    "facilityHsaId": "SE2321000156-A002"
+  },
+  {
+    "hsaId": "SE2321000156-P007",
+    "name": "Karin Åberg",
+    "title": "Specialistläkare",
+    "professionCode": "DOCTOR",
+    "facilityHsaId": "SE2321000156-A003"
+  },
+  {
+    "hsaId": "SE2321000156-P008",
+    "name": "Per Holmgren",
+    "title": "Undersköterska",
+    "professionCode": "OTHER",
+    "facilityHsaId": "SE2321000156-A003"
+  },
+  {
+    "hsaId": "SE2321000156-P009",
+    "name": "Sofia Ekman",
+    "title": "Distriktssköterska",
+    "professionCode": "NURSE",
+    "facilityHsaId": "SE2321000156-A003"
+  }
+]

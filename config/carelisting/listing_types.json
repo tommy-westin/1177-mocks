@@ -1,0 +1,17 @@
+[
+  {
+    "code": "PRIMARY_CARE",
+    "codeSystem": "1.2.752.129.2.2.4.1",
+    "displayName": "Vårdcentral"
+  },
+  {
+    "code": "FAST_DOCTOR_CONTACT",
+    "codeSystem": "1.2.752.129.2.2.4.1",
+    "displayName": "Fast läkarkontakt"
+  },
+  {
+    "code": "FAST_CARE_CONTACT",
+    "codeSystem": "1.2.752.129.2.2.4.1",
+    "displayName": "Fast vårdkontakt"
+  }
+]

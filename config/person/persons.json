@@ -1,0 +1,70 @@
+[
+  {
+    "personId": "194001019999",
+    "scenario": "in_county",
+    "givenName": "Anna",
+    "surname": "Lindström",
+    "countyCode": "23",
+    "municipalityCode": "83",
+    "postalAddress1": "Storgatan 1",
+    "postalCode": 83130,
+    "city": "Östersund",
+    "protectedPersonIndicator": false,
+    "testIndicator": true
+  },
+  {
+    "personId": "197505059999",
+    "scenario": "moved_away",
+    "givenName": "Lars",
+    "surname": "Pettersson",
+    "countyCode": "01",
+    "municipalityCode": "80",
+    "postalAddress1": "Sveavägen 100",
+    "postalCode": 11350,
+    "city": "Stockholm",
+    "protectedPersonIndicator": false,
+    "testIndicator": true
+  },
+  {
+    "personId": "199505059999",
+    "scenario": "in_county",
+    "givenName": "Erik",
+    "surname": "Bergman",
+    "countyCode": "23",
+    "municipalityCode": "83",
+    "postalAddress1": "Ringvägen 5",
+    "postalCode": 83141,
+    "city": "Östersund",
+    "protectedPersonIndicator": false,
+    "testIndicator": true
+  },
+  {
+    "personId": "196012129999",
+    "scenario": "deceased",
+    "givenName": "Sven",
+    "surname": "Andersson",
+    "countyCode": "23",
+    "municipalityCode": "83",
+    "postalAddress1": "Fjällgatan 3",
+    "postalCode": 83133,
+    "city": "Östersund",
+    "protectedPersonIndicator": false,
+    "testIndicator": true,
+    "deregistrationReasonCode": "AV",
+    "deregistrationDate": "2024-03-15"
+  },
+  {
+    "personId": "196505051234",
+    "scenario": "protected",
+    "givenName": "Sekretess",
+    "surname": "Markerad",
+    "countyCode": "23",
+    "municipalityCode": "83",
+    "protectedPersonIndicator": true,
+    "testIndicator": true
+  },
+  {
+    "personId": "200101019999",
+    "scenario": "not_found"
+  }
+]

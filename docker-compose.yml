@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  vvh-mocks:
+    build: .
+    ports:
+      - "8088:8088"
+    volumes:
+      # Mount the project schemas so the mock can read WSDLs and XSDs
+      - ../vardvalshanteraren/carelisting_1177/schemas:/project/vardvalshanteraren/carelisting_1177/schemas:ro
+    environment:
+      MOCK_PORT: "8088"
+    restart: unless-stopped
