@@ -44,6 +44,7 @@ from services.person import (
     get_persons_for_profile,
     get_persons_for_profile_unrestricted,
     get_files_for_order_id,
+    search_persons_for_profile_by_order,
     file_orders,
 )
 
@@ -96,6 +97,8 @@ _PERSON_WSDL = {
         f"{MOCK_HOST}/person/GetPersonsForProfileUnrestricted",
     "GetFilesForOrderIdInteraction_4.0_RIVTABP21.wsdl":
         f"{MOCK_HOST}/person/GetFilesForOrderId",
+    "SearchPersonsForProfileByOrderInteraction_5.0_RIVTABP21.wsdl":
+        f"{MOCK_HOST}/person/SearchPersonsForProfileByOrder",
 }
 
 _WSDL_ADDRESS: dict[str, str] = {**_CARELISTING_WSDL, **_PERSON_WSDL}
@@ -117,6 +120,7 @@ PERSON_HANDLERS = {
     "GetPersonsForProfile":             get_persons_for_profile.handle,
     "GetPersonsForProfileUnrestricted": get_persons_for_profile_unrestricted.handle,
     "GetFilesForOrderId":               get_files_for_order_id.handle,
+    "SearchPersonsForProfileByOrder":   search_persons_for_profile_by_order.handle,
 }
 
 # ---------------------------------------------------------------------------
@@ -231,6 +235,7 @@ def _wsdl_redirect(domain: str, operation: str) -> Response:
             "GetPersonsForProfile":             "interactions/GetPersonsForProfileInteraction/GetPersonsForProfileInteraction_5.0_RIVTABP21.wsdl",
             "GetPersonsForProfileUnrestricted": "interactions/GetPersonsForProfileUnrestrictedInteraction/GetPersonsForProfileUnrestrictedInteraction_5.0_RIVTABP21.wsdl",
             "GetFilesForOrderId":               "interactions/GetFilesForOrderIdInteraction/GetFilesForOrderIdInteraction_4.0_RIVTABP21.wsdl",
+            "SearchPersonsForProfileByOrder":   "interactions/SearchPersonsForProfileByOrderInteraction/SearchPersonsForProfileByOrderInteraction_5.0_RIVTABP21.wsdl",
         },
     }
     path = _maps.get(domain, {}).get(operation)
