@@ -21,7 +21,8 @@ import re
 from lxml import etree
 
 from .xml_utils import parse_body, local_text, soap_response, sub, CORE_NS
-from .get_persons_for_profile import _load_persons, _person_by_id, _build_person_record
+from .get_persons_for_profile import _build_person_record
+import db as _db
 from . import file_orders
 import logging_config  # noqa: F401
 
@@ -47,9 +48,8 @@ def handle(raw_xml: bytes) -> bytes:
     log.info("SearchPersonsForProfileByOrder – profile=%s query=%r", profile, query)
 
     predicates = _parse_where(query)
-    persons    = _load_persons()
-    matched    = [p for p in persons if p.get("scenario") != "not_found"
-                                     and _matches(p, predicates)]
+    persons    = _db.get_all_persons(scenario.get())
+    matched    = [p for p in persons if _matches(p, predicates)]
 
     log.info("SearchPersonsForProfileByOrder → %d träffar", len(matched))
 

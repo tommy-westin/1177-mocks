@@ -28,6 +28,13 @@ from flask import Flask, request, Response, send_from_directory, abort
 from lxml import etree
 import logging_config  # noqa: F401 – configures handlers
 import scenario
+import db as _db
+
+# Skapa DB från JSON-filer om den inte finns ännu
+if not os.path.exists(_db.DB_PATH):
+    import create_db
+    print("Skapar databas från JSON-filer...")
+    create_db.main()
 
 # --- carelisting services ---
 from services.carelisting import (
@@ -279,34 +286,30 @@ def _available_scenarios() -> list[str]:
 
 @app.route("/purest/getPersonsByFile", methods=["POST"])
 def get_persons_by_file():
-    import io, zipfile, json as _json
-    from services.person.get_persons_for_profile import _load_persons, _person_by_id, _build_person_record
+    from services.person.get_persons_for_profile import _build_person_record
     from lxml import etree as _etree
 
-    profile = request.form.get("profile", "P2")
+    profile  = request.form.get("profile", "P2")
     csv_file = request.files.get("file")
     if not csv_file:
         return {"error": "Parametern 'file' saknas"}, 400
 
-    lines = csv_file.read().decode("utf-8", errors="replace").strip().splitlines()
+    lines      = csv_file.read().decode("utf-8", errors="replace").strip().splitlines()
     person_ids = [line.split(";")[0].strip() for line in lines if line.strip()]
     if not person_ids:
         return {"error": "CSV-filen är tom eller ogiltigt formaterad"}, 400
 
-    persons = _load_persons()
-
-    NS = "urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:5"
-    CORE = "urn:riv:strategicresourcemanagement:persons:person:5"
+    NS             = "urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:5"
+    CORE           = "urn:riv:strategicresourcemanagement:persons:person:5"
     PERSON_ID_ROOT = "1.2.752.129.2.1.3.1"
 
     resp_el = _etree.Element(f"{{{NS}}}GetPersonsForProfileResponse",
                              nsmap={"resp": NS, "core": CORE})
-
     for pid in person_ids:
-        person = _person_by_id(persons, pid)
+        person = _db.get_person(pid, scenario.get())
         rec_el = _etree.SubElement(resp_el, f"{{{NS}}}requestedPersonRecord")
         req_id = _etree.SubElement(rec_el, f"{{{CORE}}}requestedPersonalIdentity")
-        _etree.SubElement(req_id, f"{{{CORE}}}root").text  = PERSON_ID_ROOT
+        _etree.SubElement(req_id, f"{{{CORE}}}root").text      = PERSON_ID_ROOT
         _etree.SubElement(req_id, f"{{{CORE}}}extension").text = pid
         if person and person.get("scenario") != "not_found":
             pr_el = _etree.SubElement(rec_el, f"{{{CORE}}}personRecord")
@@ -314,8 +317,7 @@ def get_persons_by_file():
 
     xml_bytes = _etree.tostring(resp_el, xml_declaration=True,
                                 encoding="UTF-8", pretty_print=True)
-
-    order_id, guid = file_orders.create(_zip_xml(xml_bytes, "result"))
+    order_id, _ = file_orders.create(_zip_xml(xml_bytes, "result"))
     return {"orderId": order_id}, 201
 
 

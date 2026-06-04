@@ -21,19 +21,9 @@ from .xml_utils import (
 )
 import logging_config  # noqa: F401
 import scenario
+import db
 
 log = logging_config.request_logger
-
-_CONFIG = os.path.join(os.path.dirname(__file__), "../../config/person/persons.json")
-
-
-def _load_persons() -> list[dict]:
-    with open(scenario.resolve(_CONFIG), encoding="utf-8") as f:
-        return json.load(f)
-
-
-def _person_by_id(persons: list[dict], pid: str) -> dict | None:
-    return next((p for p in persons if p.get("personId") == pid), None)
 
 
 def handle(raw_xml: bytes, operation: str = "GetPersonsForProfile") -> bytes:
@@ -50,14 +40,12 @@ def handle(raw_xml: bytes, operation: str = "GetPersonsForProfile") -> bytes:
     profile = local_text(body, "profile") or "P2"
     log.info("%s – profile=%s persons=%s", operation, profile, requested_ids)
 
-    persons = _load_persons()
-
     resp = etree.Element(f"{{{ns}}}{operation}Response", nsmap={
         "resp": ns, "core": CORE_NS
     })
 
     for pid in requested_ids:
-        person = _person_by_id(persons, pid)
+        person = db.get_person(pid, scenario.get())
         rec_el = sub(resp, ns, "requestedPersonRecord")
 
         # Always echo back the requested identity
