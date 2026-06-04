@@ -43,6 +43,8 @@ from services.carelisting import (
 from services.person import (
     get_persons_for_profile,
     get_persons_for_profile_unrestricted,
+    get_files_for_order_id,
+    file_orders,
 )
 
 app = Flask(__name__)
@@ -92,6 +94,8 @@ _PERSON_WSDL = {
         f"{MOCK_HOST}/person/GetPersonsForProfile",
     "GetPersonsForProfileUnrestrictedInteraction_5.0_RIVTABP21.wsdl":
         f"{MOCK_HOST}/person/GetPersonsForProfileUnrestricted",
+    "GetFilesForOrderIdInteraction_4.0_RIVTABP21.wsdl":
+        f"{MOCK_HOST}/person/GetFilesForOrderId",
 }
 
 _WSDL_ADDRESS: dict[str, str] = {**_CARELISTING_WSDL, **_PERSON_WSDL}
@@ -112,6 +116,7 @@ CARELISTING_HANDLERS = {
 PERSON_HANDLERS = {
     "GetPersonsForProfile":             get_persons_for_profile.handle,
     "GetPersonsForProfileUnrestricted": get_persons_for_profile_unrestricted.handle,
+    "GetFilesForOrderId":               get_files_for_order_id.handle,
 }
 
 # ---------------------------------------------------------------------------
@@ -225,6 +230,7 @@ def _wsdl_redirect(domain: str, operation: str) -> Response:
         "person": {
             "GetPersonsForProfile":             "interactions/GetPersonsForProfileInteraction/GetPersonsForProfileInteraction_5.0_RIVTABP21.wsdl",
             "GetPersonsForProfileUnrestricted": "interactions/GetPersonsForProfileUnrestrictedInteraction/GetPersonsForProfileUnrestrictedInteraction_5.0_RIVTABP21.wsdl",
+            "GetFilesForOrderId":               "interactions/GetFilesForOrderIdInteraction/GetFilesForOrderIdInteraction_4.0_RIVTABP21.wsdl",
         },
     }
     path = _maps.get(domain, {}).get(operation)
@@ -260,6 +266,72 @@ def _available_scenarios() -> list[str]:
             name = os.path.basename(path).split("_", 1)[1].rsplit(".json", 1)[0]
             names.add(name)
     return ["default"] + sorted(names)
+
+
+# ---------------------------------------------------------------------------
+# REST – getPersonsByFile / order/get  (file-based batch person lookup)
+# ---------------------------------------------------------------------------
+
+@app.route("/purest/getPersonsByFile", methods=["POST"])
+def get_persons_by_file():
+    import io, zipfile, json as _json
+    from services.person.get_persons_for_profile import _load_persons, _person_by_id, _build_person_record
+    from lxml import etree as _etree
+
+    profile = request.form.get("profile", "P2")
+    csv_file = request.files.get("file")
+    if not csv_file:
+        return {"error": "Parametern 'file' saknas"}, 400
+
+    lines = csv_file.read().decode("utf-8", errors="replace").strip().splitlines()
+    person_ids = [line.split(";")[0].strip() for line in lines if line.strip()]
+    if not person_ids:
+        return {"error": "CSV-filen är tom eller ogiltigt formaterad"}, 400
+
+    persons = _load_persons()
+
+    NS = "urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:5"
+    CORE = "urn:riv:strategicresourcemanagement:persons:person:5"
+    PERSON_ID_ROOT = "1.2.752.129.2.1.3.1"
+
+    resp_el = _etree.Element(f"{{{NS}}}GetPersonsForProfileResponse",
+                             nsmap={"resp": NS, "core": CORE})
+
+    for pid in person_ids:
+        person = _person_by_id(persons, pid)
+        rec_el = _etree.SubElement(resp_el, f"{{{NS}}}requestedPersonRecord")
+        req_id = _etree.SubElement(rec_el, f"{{{CORE}}}requestedPersonalIdentity")
+        _etree.SubElement(req_id, f"{{{CORE}}}root").text  = PERSON_ID_ROOT
+        _etree.SubElement(req_id, f"{{{CORE}}}extension").text = pid
+        if person and person.get("scenario") != "not_found":
+            pr_el = _etree.SubElement(rec_el, f"{{{CORE}}}personRecord")
+            _build_person_record(pr_el, person, profile)
+
+    xml_bytes = _etree.tostring(resp_el, xml_declaration=True,
+                                encoding="UTF-8", pretty_print=True)
+
+    order_id, guid = file_orders.create(_zip_xml(xml_bytes, "result"))
+    return {"orderId": order_id}, 201
+
+
+def _zip_xml(xml_bytes: bytes, base_name: str) -> bytes:
+    import io, zipfile as _zf
+    buf = io.BytesIO()
+    with _zf.ZipFile(buf, "w", _zf.ZIP_DEFLATED) as zf:
+        zf.writestr(f"{base_name}.xml", xml_bytes)
+    return buf.getvalue()
+
+
+@app.route("/purest/order/get/<guid>", methods=["GET"])
+def order_get(guid: str):
+    zip_bytes = file_orders.get_zip_by_guid(guid)
+    if zip_bytes is None:
+        abort(404)
+    return Response(
+        zip_bytes,
+        content_type="application/zip",
+        headers={"Content-Disposition": f"attachment; filename={guid}.zip"},
+    )
 
 
 @app.route("/scenario", methods=["GET"])
@@ -326,6 +398,27 @@ def index():
                 f"WSDL: <a href='{wsdl}'>{wsdl}</a> &nbsp; SOAP: {soap}</li>"
             )
         lines.append("</ul>")
+
+    lines.append("<h2>REST (filhantering)</h2><ul>")
+    lines.append(
+        f"<li><b>POST</b> <code>{MOCK_HOST}/purest/getPersonsByFile</code>"
+        " &nbsp; multipart/form-data: <code>file</code> (CSV), <code>profile</code> (P1-P5)"
+        " &nbsp;→ <code>{{\"orderId\": \"...\"}}</code></li>"
+    )
+    lines.append(
+        f"<li><b>SOAP GetFilesForOrderId</b> &nbsp; polla med orderId"
+        " &nbsp;→ returnerar nedladdningslänk när klar (direkt i mock)</li>"
+    )
+    lines.append(
+        f"<li><b>GET</b> <code>{MOCK_HOST}/purest/order/get/{{guid}}</code>"
+        " &nbsp;→ ZIP med XML (GetPersonsForProfileResponse-format)</li>"
+    )
+    lines.append("</ul>")
+
+    lines.append(
+        f"<p><a href='{MOCK_HOST}/scenario'>Scenario-växling</a> &nbsp; "
+        f"Aktivt: <b>{scenario.get()}</b></p>"
+    )
     return "\n".join(lines)
 
 
