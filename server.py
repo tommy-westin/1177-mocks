@@ -128,25 +128,39 @@ def _serve_schema_file(domain: str, filename: str) -> Response:
         abort(403)
 
     if filename.endswith(".wsdl"):
-        return _serve_wsdl(abs_path)
+        return _serve_wsdl(abs_path, domain)
 
     directory = os.path.dirname(abs_path)
     return send_from_directory(directory, os.path.basename(abs_path),
                                mimetype="text/xml")
 
 
-def _serve_wsdl(wsdl_path: str) -> Response:
+def _serve_wsdl(wsdl_path: str, domain: str | None = None) -> Response:
     if not os.path.isfile(wsdl_path):
         abort(404)
 
     tree = etree.parse(wsdl_path)
+    root = tree.getroot()
     soap_ns = "http://schemas.xmlsoap.org/wsdl/soap/"
+    xs_ns   = "http://www.w3.org/2001/XMLSchema"
     wsdl_name = os.path.basename(wsdl_path)
-    endpoint = _WSDL_ADDRESS.get(wsdl_name,
-                                  f"http://localhost:{PORT}/unknown")
+    endpoint = _WSDL_ADDRESS.get(wsdl_name, f"{MOCK_HOST}/unknown")
 
-    for el in tree.getroot().iter(f"{{{soap_ns}}}address"):
+    for el in root.iter(f"{{{soap_ns}}}address"):
         el.set("location", endpoint)
+
+    # Rewrite relative schemaLocation attributes to absolute URLs so that
+    # tools like SoapUI resolve XSD files correctly regardless of the URL
+    # the WSDL was fetched from.
+    if domain and domain in SCHEMA_BASES:
+        schema_base = SCHEMA_BASES[domain]
+        wsdl_dir    = os.path.dirname(wsdl_path)
+        for el in root.iter(f"{{{xs_ns}}}import"):
+            loc = el.get("schemaLocation")
+            if loc and not loc.startswith("http"):
+                abs_xsd = os.path.normpath(os.path.join(wsdl_dir, loc))
+                rel     = os.path.relpath(abs_xsd, schema_base)
+                el.set("schemaLocation", f"{MOCK_HOST}/schemas/{domain}/{rel}")
 
     xml_bytes = etree.tostring(tree, xml_declaration=True, encoding="UTF-8",
                                pretty_print=True)
@@ -216,8 +230,8 @@ def _wsdl_redirect(domain: str, operation: str) -> Response:
     path = _maps.get(domain, {}).get(operation)
     if path is None:
         abort(404)
-    url = f"{MOCK_HOST}/schemas/{domain}/{path}"
-    return Response(status=302, headers={"Location": url})
+    wsdl_abs = os.path.join(SCHEMA_BASES[domain], path)
+    return _serve_wsdl(wsdl_abs, domain)
 
 
 def _soap_fault(message: str) -> bytes:
