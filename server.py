@@ -57,6 +57,9 @@ from services.person import (
 
 app = Flask(__name__)
 
+from admin_api import admin
+app.register_blueprint(admin)
+
 PORT = int(os.environ.get("MOCK_PORT", "8088"))
 MOCK_HOST = os.environ.get("MOCK_HOST", f"http://localhost:{PORT}")
 SOAP_CONTENT_TYPE = "text/xml; charset=utf-8"
