@@ -42,6 +42,7 @@ from services.carelisting import (
     get_facilities,
     get_personnel,
     get_listing,
+    get_listing_county,
     create_listing,
     update_listing,
 )
@@ -88,6 +89,8 @@ SCHEMA_BASES: dict[str, str] = {
 _CARELISTING_WSDL = {
     "GetListingTypesInteraction_2.0_RIVTABP21.wsdl":
         f"{MOCK_HOST}/carelisting/GetListingTypes",
+    "GetListingCountyInteraction_2.0_RIVTABP21.wsdl":
+        f"{MOCK_HOST}/carelisting/GetListingCounty",
     "GetAvailableHealthcareFacilitiesInteraction_2.1_RIVTABP21.wsdl":
         f"{MOCK_HOST}/carelisting/GetAvailableHealthcareFacilities",
     "GetAvailableHealthcarePersonnelInteraction_2.0_RIVTABP21.wsdl":
@@ -122,6 +125,7 @@ CARELISTING_HANDLERS = {
     "GetAvailableHealthcareFacilities": get_facilities.handle,
     "GetAvailableHealthcarePersonnel":  get_personnel.handle,
     "GetListing":                       get_listing.handle,
+    "GetListingCounty":                 get_listing_county.handle,
     "CreateListing":                    create_listing.handle,
     "UpdateListing":                    update_listing.handle,
 }
@@ -238,6 +242,7 @@ def _wsdl_redirect(domain: str, operation: str) -> Response:
             "GetAvailableHealthcareFacilities": "interactions/GetAvailableHealthcareFacilitiesInteraction/GetAvailableHealthcareFacilitiesInteraction_2.1_RIVTABP21.wsdl",
             "GetAvailableHealthcarePersonnel":  "interactions/GetAvailableHealthcarePersonnelInteraction/GetAvailableHealthcarePersonnelInteraction_2.0_RIVTABP21.wsdl",
             "GetListing":                       "interactions/GetListingInteraction/GetListingInteraction_2.1_RIVTABP21.wsdl",
+            "GetListingCounty":                 "interactions/GetListingCountyInteraction/GetListingCountyInteraction_2.0_RIVTABP21.wsdl",
             "CreateListing":                    "interactions/CreateListingInteraction/CreateListingInteraction_2.0_RIVTABP21.wsdl",
             "UpdateListing":                    "interactions/UpdateListingInteraction/UpdateListingInteraction_2.0_RIVTABP21.wsdl",
         },

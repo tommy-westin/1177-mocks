@@ -77,6 +77,47 @@ Hämtar listningsinformation för en person.
 
 ---
 
+#### GetListingCounty
+
+Returnerar vilken region/landsting en person är listad i, som ett HSA-id.
+
+- **WSDL:** `GET /carelisting/GetListingCounty?wsdl`
+- **Endpoint:** `POST /carelisting/GetListingCounty`
+- **Namespace:** `urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2`
+
+```xml
+<req:GetListingCountyRequest xmlns:req="urn:riv:supportprocess:logistics:carelisting:GetListingCountyResponder:2">
+  <req:actor>
+    <req:actorId>
+      <req:root>1.2.752.129.2.1.4.1</req:root>
+      <req:extension>SE2321000156-A001</req:extension>
+    </req:actorId>
+    <req:actorType>healthcare_professional</req:actorType>
+  </req:actor>
+  <req:personId>
+    <req:root>1.2.752.129.2.1.3.1</req:root>
+    <req:extension>194001019999</req:extension>
+  </req:personId>
+</req:GetListingCountyRequest>
+```
+
+**Svar (listad):**
+```xml
+<GetListingCountyResponse>
+  <listingCounties>
+    <root>1.2.752.129.2.1.4.1</root>
+    <extension>SE2321000156</extension>  <!-- regionens HSA-id -->
+  </listingCounties>
+  <resultCode>OK</resultCode>
+</GetListingCountyResponse>
+```
+
+**Svar (ej listad):** `<GetListingCountyResponse><resultCode>OK</resultCode></GetListingCountyResponse>`
+
+Regionens HSA-id härleds från hälsocentralens HSA-id: `SE2321000156-A001` → `SE2321000156`.
+
+---
+
 #### GetAvailableHealthcareFacilities
 
 Hämtar tillgängliga hälsocentraler, med valfritt filter på HSA-id eller listningstyp.
