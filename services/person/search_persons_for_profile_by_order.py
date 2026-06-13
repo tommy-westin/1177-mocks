@@ -23,6 +23,7 @@ from lxml import etree
 from .xml_utils import parse_body, local_text, soap_response, sub, CORE_NS
 from .get_persons_for_profile import _build_person_record
 import db as _db
+import scenario
 from . import file_orders
 import logging_config  # noqa: F401
 
