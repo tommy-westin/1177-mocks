@@ -17,8 +17,10 @@ import sqlite3
 from flask import Blueprint, request, jsonify
 import db
 import scenario as _scenario
+from auth import check_api_key
 
 admin = Blueprint("admin", __name__, url_prefix="/admin")
+admin.before_request(check_api_key)
 
 
 def _scen() -> str:

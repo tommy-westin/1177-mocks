@@ -29,6 +29,7 @@ from lxml import etree
 import logging_config  # noqa: F401 – configures handlers
 import scenario
 import db as _db
+from auth import require_api_key
 
 # Skapa DB från JSON-filer om den inte finns ännu
 if not os.path.exists(_db.DB_PATH):
@@ -368,18 +369,49 @@ def get_scenario():
 <head>
   <meta charset="utf-8">
   <title>VVH Mock – Scenario</title>
-  <style>body{{font-family:sans-serif;max-width:600px;margin:60px auto;padding:0 20px}}</style>
+  <style>
+    body{{font-family:sans-serif;max-width:600px;margin:60px auto;padding:0 20px}}
+    #key-row{{display:flex;gap:8px;margin-bottom:20px;align-items:center}}
+    #key-input{{flex:1;padding:8px;font-size:0.9rem;border:1px solid #ccc;border-radius:4px}}
+    #key-save{{padding:8px 14px;background:#6b7280;color:white;border:none;border-radius:4px;cursor:pointer}}
+    #key-status{{font-size:0.85rem;color:#6b7280}}
+  </style>
 </head>
 <body>
   <h1>Scenario</h1>
+  <div id="key-row">
+    <input id="key-input" type="password" placeholder="API-nyckel (X-Api-Key)" />
+    <button id="key-save" onclick="saveKey()">Spara</button>
+    <span id="key-status"></span>
+  </div>
   <p>Aktivt: <strong id="active">{active}</strong></p>
   <div id="buttons">{buttons}</div>
   <p id="msg" style="color:green;margin-top:16px"></p>
   <script>
+    const stored = sessionStorage.getItem('apiKey') || '';
+    if (stored) {{
+      document.getElementById('key-input').value = stored;
+      document.getElementById('key-status').textContent = 'Nyckel inläst';
+    }}
+    function saveKey() {{
+      const k = document.getElementById('key-input').value.trim();
+      sessionStorage.setItem('apiKey', k);
+      document.getElementById('key-status').textContent = k ? 'Sparad' : 'Rensad';
+    }}
     async function switchTo(name) {{
-      const r = await fetch('/scenario/' + name, {{method: 'POST'}});
+      const key = sessionStorage.getItem('apiKey') || '';
+      const r = await fetch('/scenario/' + name, {{
+        method: 'POST',
+        headers: key ? {{'X-Api-Key': key}} : {{}}
+      }});
+      if (r.status === 401) {{
+        document.getElementById('msg').style.color = 'red';
+        document.getElementById('msg').textContent = 'Fel API-nyckel – ange nyckeln ovan';
+        return;
+      }}
       const d = await r.json();
       document.getElementById('active').textContent = d.active;
+      document.getElementById('msg').style.color = 'green';
       document.getElementById('msg').textContent = 'Bytte till ' + d.active;
       document.querySelectorAll('button').forEach(b => {{
         const isActive = b.textContent.trim() === d.active;
@@ -394,6 +426,7 @@ def get_scenario():
 
 
 @app.route("/scenario/<name>", methods=["POST"])
+@require_api_key
 def set_scenario(name: str):
     scenario.switch(name)
     return {"active": scenario.get()}
