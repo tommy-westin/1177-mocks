@@ -73,6 +73,7 @@ nano .env
 ```env
 MOCK_HOST=https://1177-mock.din-domän.com
 CF_TUNNEL_TOKEN=eyJ...  # token från Cloudflare
+ADMIN_API_KEY=välj-en-lång-slumpmässig-sträng  # skyddar /admin/* och /scenario/*
 ```
 
 ### 6. Starta
@@ -88,6 +89,38 @@ Första uppstarten skapar `config/data.db` automatiskt från JSON-filerna.
 1. **Zero Trust → Access → Applications → Add → Self-hosted**
 2. Skapa en applikation för path `scenario` och en för `admin`
 3. Policy: Allow → Emails → din e-postadress
+
+### API-nyckel för admin-endpoints
+
+Sätt `ADMIN_API_KEY` i `.env` (se ovan). Skicka nyckeln som header `X-Api-Key` i varje anrop mot `/admin/*` och `POST /scenario/*`.
+
+**Exempel – hämta och ändra data:**
+
+```bash
+# Hämta alla patienter
+curl -H "X-Api-Key: din-nyckel" https://1177-mock.din-domän.com/admin/patients
+
+# Uppdatera en patient
+curl -X PUT \
+  -H "X-Api-Key: din-nyckel" \
+  -H "Content-Type: application/json" \
+  -d '{"facilityHsaId": "SE2321000156-E000001", "isInQueue": false}' \
+  https://1177-mock.din-domän.com/admin/patients/190101019999
+
+# Byta aktivt scenario
+curl -X POST \
+  -H "X-Api-Key: din-nyckel" \
+  https://1177-mock.din-domän.com/scenario/massavflyttning
+
+# Återskapa databas från JSON
+curl -X POST \
+  -H "X-Api-Key: din-nyckel" \
+  https://1177-mock.din-domän.com/admin/rebuild-db
+```
+
+**I webbläsaren** – scenario-sidan (`/scenario`) har ett nyckel-fält längst upp. Ange nyckeln där; den sparas i sessionStorage för resten av sessionen.
+
+> **Lokal dev (Windows):** Lämna `ADMIN_API_KEY` tom i `.env` – då krävs ingen nyckel.
 
 ---
 
